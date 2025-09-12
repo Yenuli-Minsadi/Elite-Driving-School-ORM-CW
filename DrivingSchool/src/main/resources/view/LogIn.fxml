@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #070F2B;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.LogInController">
+   <effect>
+      <DropShadow height="6.105" radius="1.02625" width="0.0" />
+   </effect>
+   <children>
+      <Pane layoutX="75.0" layoutY="65.0" prefHeight="470.0" prefWidth="450.0" style="-fx-background-radius: 50; -fx-background-color: white;">
+         <effect>
+            <DropShadow height="91.34" radius="42.9725" width="82.55" />
+         </effect>
+         <children>
+            <Text layoutX="122.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log into Your Account">
+               <font>
+                  <Font name="Malgun Gothic" size="20.0" />
+               </font>
+            </Text>
+            <TextField layoutX="100.0" layoutY="251.0" prefHeight="32.0" prefWidth="250.0" promptText="Enter Username" style="-fx-background-radius: 50;">
+               <effect>
+                  <DropShadow height="0.0" radius="0.0" width="0.0" />
+               </effect></TextField>
+            <PasswordField layoutX="100.0" layoutY="301.0" prefHeight="32.0" prefWidth="250.0" promptText="Enter Password" style="-fx-background-radius: 50;" />
+            <Button layoutX="190.0" layoutY="356.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" style="-fx-background-radius: 50; -fx-background-color: #00712D;" text="Go" textFill="WHITE">
+               <font>
+                  <Font name="Malgun Gothic Bold" size="12.0" />
+               </font>
+            </Button>
+            <Text layoutX="111.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an Account?" />
+            <Label layoutX="307.0" layoutY="419.0" text="Sign Up" textFill="#16a4fc" />
+            <ImageView fitHeight="120.0" fitWidth="206.0" layoutX="122.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="112.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Drivey.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

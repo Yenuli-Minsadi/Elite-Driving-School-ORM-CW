@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="ancStudentDash" prefHeight="647.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.ConsultationsController">
+   <children>
+      <Pane layoutX="144.0" layoutY="32.0" prefHeight="566.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+         <children>
+            <TableView layoutX="17.0" layoutY="326.0" prefHeight="217.0" prefWidth="874.0">
+               <columns>
+                  <TableColumn prefWidth="151.0" text="CON_ID" />
+                  <TableColumn prefWidth="143.0" text="SID" />
+                  <TableColumn prefWidth="152.0" text="COORD_ID" />
+                  <TableColumn prefWidth="258.0" text="Consultation Date" />
+                  <TableColumn prefWidth="169.0" text="Status" />
+               </columns>
+            </TableView>
+            <Label layoutX="26.0" layoutY="86.0" text="Consultation ID" />
+            <Label layoutX="599.0" layoutY="83.0" text="Coordinator ID" />
+            <Label layoutX="19.0" layoutY="172.0" text="Consultation Date" />
+            <Label layoutX="368.0" layoutY="172.0" text="Status" />
+         </children>
+      </Pane>
+      <Label layoutX="484.0" layoutY="115.0" text="Student ID" />
+      <TextField layoutX="560.0" layoutY="111.0" />
+      <TextField layoutX="835.0" layoutY="111.0" />
+      <TextField layoutX="287.0" layoutY="201.0" />
+      <TextField layoutX="560.0" layoutY="201.0" />
+   </children>
+</Pane>
