@@ -1,5 +1,6 @@
 package edu.ijse.drivingschool.dao.custom.impl;
 
+import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.dao.custom.LessonDAO;
 import edu.ijse.drivingschool.entity.Lesson;
@@ -7,6 +8,9 @@ import edu.ijse.drivingschool.entity.Lesson;
 import java.util.List;
 
 public class LessonDAOImpl implements LessonDAO {
+
+    private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
+
     @Override
     public boolean save(Lesson entity) {
         return false;
