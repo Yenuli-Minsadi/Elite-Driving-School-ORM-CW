@@ -2,14 +2,15 @@ package edu.ijse.drivingschool.dao.custom.impl;
 
 import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.entity.Consultation;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
+
 public class ConsultationDAOImpl implements ConsultationDAO {
     @Override
-    public boolean save(Consultation entity) {
-        return false;
-    }
+    public boolean save(Consultation entity) { return false; }
 
     @Override
     public boolean update(Consultation entity) {
