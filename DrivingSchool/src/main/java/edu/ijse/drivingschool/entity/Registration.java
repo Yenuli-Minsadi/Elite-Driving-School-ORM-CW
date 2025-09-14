@@ -13,12 +13,13 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "registration")
+@Table(name = "registration ")
 public class Registration {
     @Id
     private String registrationId;
     private String studentId;
-    private String consultationId;
+    private String courseId;
+    private String processedBy; //user id fk
     private String paymentId;
     private LocalDate registrationDate;
     private String status;

@@ -62,8 +62,8 @@ public class StudentDAOImpl implements StudentDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-            Student existStudent = session.get(Student.class,id);
-            if (existStudent == null) {
+            Student student = session.get(Student.class,id);
+            if (student == null) {
                 throw new Exception("Cannot delete student, Student ID not found!");
             }
             session.remove(id);

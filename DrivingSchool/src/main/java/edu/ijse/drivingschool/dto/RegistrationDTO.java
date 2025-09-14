@@ -12,7 +12,8 @@ import java.time.LocalDate;
 public class RegistrationDTO {
     private String registrationId;
     private String studentId;
-    private String consultationId;
+    private String courseId;
+    private String processedBy; //user id fk
     private String paymentId;
     private LocalDate registrationDate;
     private String status;

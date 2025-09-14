@@ -64,8 +64,8 @@ public class ConsultationDAOImpl implements ConsultationDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-            Consultation existConsultation = session.get(Consultation.class, id);
-            if (existConsultation == null) {
+            Consultation consultation = session.get(Consultation.class, id);
+            if (consultation == null) {
                 throw new Exception("Cannot delete consultation, Consultation ID not found!");
             }
             session.remove(id);

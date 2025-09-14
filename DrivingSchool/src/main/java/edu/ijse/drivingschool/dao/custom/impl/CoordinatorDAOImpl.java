@@ -62,8 +62,8 @@ public class CoordinatorDAOImpl implements CoordinatorDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-            Coordinator existCoordinator = session.get(Coordinator.class, id);
-            if (existCoordinator == null) {
+            Coordinator coordinator = session.get(Coordinator.class, id);
+            if (coordinator == null) {
                 throw new Exception("Cannot delete coordinator, Coordinator ID not found!");
             }
             session.remove(id);
