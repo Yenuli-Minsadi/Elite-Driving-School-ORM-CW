@@ -78,6 +78,11 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Student, Student.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

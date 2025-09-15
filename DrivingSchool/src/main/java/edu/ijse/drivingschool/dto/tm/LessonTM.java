@@ -11,7 +11,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class LessonTM {
     private String lessonId;
-    private String registrationId;
+    private String lessonName;
+    private String lessonDescription;
+    private String studentId;
+    //    private String registrationId;
     private String courseId;
     private String instructorId;
     private LocalDate lessonDate;

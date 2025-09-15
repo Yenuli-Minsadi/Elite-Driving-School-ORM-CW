@@ -84,6 +84,11 @@ public class LessonDAOImpl implements LessonDAO {
 
     @Override
     public List<Lesson> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Lesson, Lesson.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

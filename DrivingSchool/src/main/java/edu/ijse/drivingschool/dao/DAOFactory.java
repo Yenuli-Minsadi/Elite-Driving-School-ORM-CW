@@ -16,6 +16,7 @@ public class DAOFactory {
     public enum DAOTypes {
         CONSULTATION,
         COORDINATOR,
+        COURSE,
         INSTRUCTOR,
         LESSON,
         PAYMENT,
@@ -30,6 +31,8 @@ public class DAOFactory {
                 return new ConsultationDAOImpl();
             case COORDINATOR:
                 return new CoordinatorDAOImpl();
+            case COURSE:
+                return new CourseDAOImpl();
             case INSTRUCTOR:
                 return new InstructorDAOImpl();
             case LESSON:

@@ -83,6 +83,11 @@ public class ConsultationDAOImpl implements ConsultationDAO {
 
     @Override
     public List<Consultation> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Consultation, Consultation.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

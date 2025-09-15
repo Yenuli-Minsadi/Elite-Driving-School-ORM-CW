@@ -78,6 +78,11 @@ public class CourseDAOImpl implements CourseDAO {
 
     @Override
     public List<Course> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Course, Course.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

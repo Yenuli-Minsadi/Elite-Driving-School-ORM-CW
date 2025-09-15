@@ -78,6 +78,11 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 
     @Override
     public List<Registration> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Registration, Registration.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

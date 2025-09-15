@@ -78,6 +78,11 @@ public class CoordinatorDAOImpl implements CoordinatorDAO {
 
     @Override
     public List<Coordinator> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Coordinator, Coordinator.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

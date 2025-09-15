@@ -77,6 +77,11 @@ public class InstructorDAOImpl implements InstructorDAO {
 
     @Override
     public List<Instructor> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Instructor, Instructor.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

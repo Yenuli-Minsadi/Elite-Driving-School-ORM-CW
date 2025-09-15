@@ -18,6 +18,7 @@ public class BOFactory {
     public enum BOTypes {
         CONSULTATION,
         COORDINATOR,
+        COURSE,
         INSTRUCTOR,
         LESSON,
         PAYMENT,
@@ -32,6 +33,8 @@ public class BOFactory {
                 return new ConsultationBOImpl();
             case COORDINATOR:
                 return new CoordinatorBOImpl();
+            case COURSE:
+                return new CourseBOImpl();
             case INSTRUCTOR:
                 return new InstructorBOImpl();
             case LESSON:

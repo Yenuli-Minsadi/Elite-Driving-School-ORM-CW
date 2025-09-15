@@ -68,6 +68,11 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public List<Payment> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM Payment, Payment.class").list();
+        } finally {
+            session.close();
+        }
     }
 }

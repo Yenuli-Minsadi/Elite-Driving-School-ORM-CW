@@ -4,6 +4,7 @@ import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.entity.User;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -28,6 +29,11 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAll() {
-        return List.of();
+        Session session = factoryConfiguration.getSession();
+        try {
+            return session.createQuery("FROM User, User.class").list();
+        } finally {
+            session.close();
+        }
     }
 }
