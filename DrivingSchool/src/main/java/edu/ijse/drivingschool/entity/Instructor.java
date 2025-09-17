@@ -1,11 +1,11 @@
 package edu.ijse.drivingschool.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -17,6 +17,10 @@ public class Instructor {
     private String instructorId;
     private String firstName;
     private String lastName;
+
+    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
+    private List<Lesson> lesson;
+
     private String specialization;
     private int phone;
     private String email;

@@ -1,8 +1,6 @@
 package edu.ijse.drivingschool.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,8 +15,17 @@ import java.time.LocalDate;
 public class Registration {
     @Id
     private String registrationId;
-    private String studentId;
-    private String courseId;
+//    private String studentId;
+
+    @ManyToOne
+    @JoinColumn(name="student_id")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name="course_id")
+    private Course course;
+
+//    private String courseId;
     private String processedBy; //user id fk
     private String paymentId;
     private LocalDate registrationDate;

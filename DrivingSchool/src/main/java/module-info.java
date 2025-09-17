@@ -4,6 +4,7 @@ module edu.ijse.drivingschool {
     requires static lombok;
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
+    requires jdk.xml.dom;
 
     // Allow JavaFX runtime to access AppInitializer
     opens edu.ijse.drivingschool to javafx.graphics;
