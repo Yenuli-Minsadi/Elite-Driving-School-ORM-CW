@@ -12,6 +12,6 @@ public class CoordinatorDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private int phone;
+    private String phone;
     private String address;
 }

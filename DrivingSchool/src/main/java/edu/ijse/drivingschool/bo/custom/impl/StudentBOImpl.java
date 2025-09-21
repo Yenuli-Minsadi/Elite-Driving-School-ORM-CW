@@ -6,6 +6,7 @@ import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dao.custom.CoordinatorDAO;
 import edu.ijse.drivingschool.dao.custom.StudentDAO;
 import edu.ijse.drivingschool.dto.StudentDTO;
+import edu.ijse.drivingschool.entity.Student;
 
 import java.util.List;
 

@@ -13,7 +13,8 @@ public class UserTM {
     private String lastName;
     private String username;
     private String email;
-    private int phone;
+    private String phone;
     private String password;
     private String role;
+
 }

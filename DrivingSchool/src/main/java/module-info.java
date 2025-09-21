@@ -5,6 +5,8 @@ module edu.ijse.drivingschool {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires jdk.xml.dom;
+    requires java.security.jgss;
+    requires jbcrypt;
 
     // Allow JavaFX runtime to access AppInitializer
     opens edu.ijse.drivingschool to javafx.graphics;

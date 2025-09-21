@@ -11,5 +11,6 @@ public interface UserDAO extends CrudDAO<User> {
     public boolean save(User entity);
     public boolean update(User entity);
     public boolean delete(String id);
+    public User verifyUsername(String username);
     public List<User> getAll();
 }

@@ -1,11 +1,10 @@
 package edu.ijse.drivingschool.bo.custom.impl;
 
-import edu.ijse.drivingschool.bo.custom.ConsultationBO;
 import edu.ijse.drivingschool.bo.custom.UserBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
-import edu.ijse.drivingschool.dao.custom.CoordinatorDAO;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.dto.UserDTO;
+import edu.ijse.drivingschool.entity.User;
 
 import java.util.List;
 
@@ -26,6 +25,11 @@ public class UserBOImpl implements UserBO {
     @Override
     public boolean delete(String id) {
         return false;
+    }
+
+    @Override
+    public User verifyUsername(String username) {
+        return userDAO.verifyUsername(username);
     }
 
     @Override

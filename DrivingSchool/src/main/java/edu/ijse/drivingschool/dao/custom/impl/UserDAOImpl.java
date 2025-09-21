@@ -5,6 +5,7 @@ import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.entity.User;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -25,6 +26,24 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean delete(String id) {
         return false;
+    }
+
+    @Override
+    public User verifyUsername(String username) {
+//        Session session = null;
+        Session session = factoryConfiguration.getSession();
+        try {
+            Query <User> query = session.createQuery("FROM User u WHERE u.username = :username", User.class);
+            query.setParameter("username",username);
+            return query.uniqueResult();//returns null if not found
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
     }
 
     @Override

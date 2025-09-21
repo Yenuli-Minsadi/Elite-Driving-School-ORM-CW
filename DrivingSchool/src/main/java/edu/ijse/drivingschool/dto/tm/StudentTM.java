@@ -14,7 +14,7 @@ public class StudentTM {
     private String firstName;
     private String lastName;
     private String email;
-    private int phone;
+    private String phone;
     private String address;
     private LocalDate dob;
 }

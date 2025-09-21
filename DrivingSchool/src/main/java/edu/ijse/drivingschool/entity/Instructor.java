@@ -22,7 +22,7 @@ public class Instructor {
     private List<Lesson> lesson;
 
     private String specialization;
-    private int phone;
+    private String phone;
     private String email;
     private String address;
 }
