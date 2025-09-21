@@ -12,7 +12,7 @@ import java.io.IOException;
 public class AdminDashController {
 
     @FXML
-    private Button btnConsult;
+    private Button btnCoordinatoor;
 
     @FXML
     private Button btnStudent;
@@ -50,9 +50,9 @@ public class AdminDashController {
     }
 
     @FXML
-    void btnConsultOnAction(ActionEvent event) throws IOException {
+    void btnCoordinatorOnAction(ActionEvent event) throws IOException {
         ancMainDash.getChildren().clear();
-        Pane pane = FXMLLoader.load(getClass().getResource("/view/Consult.fxml"));
+        Pane pane = FXMLLoader.load(getClass().getResource("/view/Coordinator.fxml"));
 
         pane.prefWidthProperty().bind(ancMainDash.widthProperty());
         pane.prefHeightProperty().bind(ancMainDash.heightProperty());

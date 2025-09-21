@@ -5,6 +5,7 @@ import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.entity.User;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -15,7 +16,24 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean save(User entity) {
-        return false;
+        Session session = factoryConfiguration.getSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            User existsUser = session.get(User.class, entity.getUserId());
+            if(existsUser != null){
+                throw new Exception("Therapist already exists");
+            }
+            session.persist(entity);
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            transaction.rollback();
+            return false;
+        }finally {
+            if(session != null){
+                session.close();
+            }
+        }
     }
 
     @Override
@@ -50,7 +68,7 @@ public class UserDAOImpl implements UserDAO {
     public List<User> getAll() {
         Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM User, User.class").list();
+            return session.createQuery("FROM User", User.class).list();
         } finally {
             session.close();
         }

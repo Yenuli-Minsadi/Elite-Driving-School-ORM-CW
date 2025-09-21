@@ -1,16 +1,21 @@
 package edu.ijse.drivingschool.controller;
 
+import edu.ijse.drivingschool.bo.BOFactory;
 import edu.ijse.drivingschool.bo.custom.UserBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.mindrot.jbcrypt.BCrypt;
 
-public class SignUpController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SignUpController implements Initializable {
 
     @FXML
     private Button btnSignUp;
@@ -45,7 +50,7 @@ public class SignUpController {
     @FXML
     private Label lblUserId;
 
-    UserBO userBO = (UserBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    UserBO userBO = (UserBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.USER);
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) {
@@ -90,7 +95,17 @@ public class SignUpController {
 
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            UserDTO newUser = new UserDTO(userId, username, firstName, lastName, email, phone, hashedPassword, role);
+            UserDTO newUser = new UserDTO(
+                    userId,
+                    firstName,
+                    lastName,
+                    username,
+                    email,
+                    phone,
+                    hashedPassword,
+                    role
+            );
+
 
             boolean isSaved = userBO.save(newUser);
 
@@ -118,5 +133,10 @@ public class SignUpController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cmbRole.getItems().addAll("admin", "receptionist");
     }
 }

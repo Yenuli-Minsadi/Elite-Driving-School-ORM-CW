@@ -1,5 +1,6 @@
 package edu.ijse.drivingschool.controller;
 
+import edu.ijse.drivingschool.bo.BOFactory;
 import edu.ijse.drivingschool.bo.custom.StudentBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dto.StudentDTO;
@@ -55,7 +56,7 @@ public class StudentController {
     @FXML
     private TextField txtPhone;
 
-    StudentBO studentBO = (StudentBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {

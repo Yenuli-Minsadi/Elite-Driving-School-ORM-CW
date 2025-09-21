@@ -20,7 +20,7 @@
                   <Button fx:id="btnCourse" layoutX="551.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnCourseOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Course" />
                   <Button fx:id="btnRegister" layoutX="291.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Registration" />
                   <Button fx:id="btnLesson" layoutX="677.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnLessonOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Lesson" />
-                  <Button fx:id="btnConsult" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnConsultOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Consult" />
+                  <Button fx:id="btnCoordinatoor" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnCoordinatorOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Coordinator" />
                   <Button fx:id="btnPayment" layoutX="422.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnPaymentOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Payment" />
                   <Button fx:id="btnInstructor" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnInstructorOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Instructor" />
                </children>

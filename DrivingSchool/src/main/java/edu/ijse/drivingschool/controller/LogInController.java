@@ -1,5 +1,6 @@
 package edu.ijse.drivingschool.controller;
 
+import edu.ijse.drivingschool.bo.BOFactory;
 import edu.ijse.drivingschool.bo.custom.StudentBO;
 import edu.ijse.drivingschool.bo.custom.UserBO;
 import edu.ijse.drivingschool.bo.custom.impl.UserBOImpl;
@@ -39,7 +40,7 @@ public class LogInController {
     @FXML
     private TextField txtUsnm;
 
-    UserBO userBO = (UserBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    UserBO userBO = (UserBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.USER);
 
     @FXML
     private TableColumn<UserTM, String> colEmail;

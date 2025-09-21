@@ -13,4 +13,7 @@ module edu.ijse.drivingschool {
 
     // Allow FXML to access controllers
     opens edu.ijse.drivingschool.controller to javafx.fxml;
+
+    // 👇 Allow Hibernate to access entities via reflection
+    opens edu.ijse.drivingschool.entity to org.hibernate.orm.core;
 }
