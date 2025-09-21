@@ -2,7 +2,6 @@ package edu.ijse.drivingschool.dao.custom.impl;
 
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.InstructorDAO;
-import edu.ijse.drivingschool.entity.Coordinator;
 import edu.ijse.drivingschool.entity.Instructor;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,6 +11,11 @@ import java.util.List;
 public class InstructorDAOImpl implements InstructorDAO {
 
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
+
+    @Override
+    public String getNextId() throws Exception {
+        return "";
+    }
 
     @Override
     public boolean save(Instructor entity) {

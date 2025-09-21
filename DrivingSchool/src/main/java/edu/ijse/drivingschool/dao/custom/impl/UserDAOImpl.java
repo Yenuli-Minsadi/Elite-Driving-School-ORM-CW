@@ -1,7 +1,6 @@
 package edu.ijse.drivingschool.dao.custom.impl;
 
 import edu.ijse.drivingschool.config.FactoryConfiguration;
-import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.entity.User;
 import org.hibernate.Session;
@@ -13,6 +12,28 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
 
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
+
+    @Override
+    public String getNextId() throws Exception {
+
+        Session session = factoryConfiguration.getSession();
+
+        String nextId = null;
+        try {
+            String lastId = session.createQuery
+                            ("SELECT u.userId FROM User u ORDER BY u.userId DESC", String.class)
+                    .setMaxResults(1).uniqueResult();
+
+            nextId = (lastId == null) ? "U001" : String.format("U%03d", Integer.parseInt(lastId.substring(1))+1);
+
+//        } catch (NullPointerException e) { //a null pointer exception since no ids found
+//            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return nextId;
+    }
+
 
     @Override
     public boolean save(User entity) {

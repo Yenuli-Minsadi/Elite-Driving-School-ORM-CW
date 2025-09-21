@@ -27,8 +27,6 @@ public class FactoryConfiguration {
         configuration.setProperties(properties);
 
         configuration.addAnnotatedClass(Student.class);
-        configuration.addAnnotatedClass(Coordinator.class);
-        configuration.addAnnotatedClass(Consultation.class);
         configuration.addAnnotatedClass(Registration.class);
         configuration.addAnnotatedClass(Course.class);
         configuration.addAnnotatedClass(Lesson.class);

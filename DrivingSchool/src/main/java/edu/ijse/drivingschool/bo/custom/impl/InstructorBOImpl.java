@@ -1,9 +1,7 @@
 package edu.ijse.drivingschool.bo.custom.impl;
 
-import edu.ijse.drivingschool.bo.custom.ConsultationBO;
 import edu.ijse.drivingschool.bo.custom.InstructorBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
-import edu.ijse.drivingschool.dao.custom.CoordinatorDAO;
 import edu.ijse.drivingschool.dao.custom.InstructorDAO;
 import edu.ijse.drivingschool.dto.InstructorDTO;
 
@@ -12,6 +10,11 @@ import java.util.List;
 public class InstructorBOImpl implements InstructorBO {
 
     InstructorDAO instructorDAO = (InstructorDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INSTRUCTOR);
+
+    @Override
+    public String getNextId() throws Exception {
+        return "";
+    }
 
     @Override
     public boolean save(InstructorDTO instructorDTO) {

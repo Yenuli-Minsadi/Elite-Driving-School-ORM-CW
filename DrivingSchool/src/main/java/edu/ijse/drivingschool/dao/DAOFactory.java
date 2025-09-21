@@ -27,10 +27,6 @@ public class DAOFactory {
 
     public SuperDAO getDAO(DAOTypes daoType) {
         switch (daoType) {
-            case CONSULTATION:
-                return new ConsultationDAOImpl();
-            case COORDINATOR:
-                return new CoordinatorDAOImpl();
             case COURSE:
                 return new CourseDAOImpl();
             case INSTRUCTOR:

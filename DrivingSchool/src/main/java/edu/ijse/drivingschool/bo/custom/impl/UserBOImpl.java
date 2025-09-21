@@ -13,6 +13,11 @@ public class UserBOImpl implements UserBO {
     UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     @Override
+    public String getNextId() throws Exception {
+        return userDAO.getNextId();
+    }
+
+    @Override
     public boolean save(UserDTO userDTO) {
         return userDAO.save(new User(userDTO.getUserId(), userDTO.getFirstName(),
                 userDTO.getLastName(), userDTO.getUsername(), userDTO.getEmail(),

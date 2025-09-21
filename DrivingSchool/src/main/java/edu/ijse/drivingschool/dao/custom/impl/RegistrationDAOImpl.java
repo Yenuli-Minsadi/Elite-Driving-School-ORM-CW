@@ -1,9 +1,7 @@
 package edu.ijse.drivingschool.dao.custom.impl;
 
 import edu.ijse.drivingschool.config.FactoryConfiguration;
-import edu.ijse.drivingschool.dao.custom.ConsultationDAO;
 import edu.ijse.drivingschool.dao.custom.RegistrationDAO;
-import edu.ijse.drivingschool.entity.Coordinator;
 import edu.ijse.drivingschool.entity.Registration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,6 +11,11 @@ import java.util.List;
 public class RegistrationDAOImpl implements RegistrationDAO {
 
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
+
+    @Override
+    public String getNextId() throws Exception {
+        return "";
+    }
 
     @Override
     public boolean save(Registration entity) {

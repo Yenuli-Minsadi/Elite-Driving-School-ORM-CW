@@ -137,6 +137,17 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cmbRole.getItems().addAll("admin", "receptionist");
+        try {
+            loadNextId();
+            cmbRole.getItems().addAll("admin", "receptionist");
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong.").show();
+        }
+    }
+
+    private void loadNextId() throws Exception {
+        String nextId = userBO.getNextId();
+        lblUserId.setText(nextId);
     }
 }

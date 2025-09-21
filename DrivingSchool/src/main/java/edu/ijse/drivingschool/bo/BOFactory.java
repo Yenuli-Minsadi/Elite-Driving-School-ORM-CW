@@ -29,10 +29,6 @@ public class BOFactory {
 
     public SuperBO getBo(BOFactory.BOTypes boType) {
         switch(boType) {
-            case CONSULTATION:
-                return new ConsultationBOImpl();
-            case COORDINATOR:
-                return new CoordinatorBOImpl();
             case COURSE:
                 return new CourseBOImpl();
             case INSTRUCTOR:
