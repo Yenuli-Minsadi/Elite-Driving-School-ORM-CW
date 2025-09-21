@@ -111,6 +111,7 @@ public class SignUpController implements Initializable {
 
             if (isSaved) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "User registered successfully!");
+
 //                clearFields();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to register user. Try again.");

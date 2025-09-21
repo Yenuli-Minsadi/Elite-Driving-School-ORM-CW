@@ -9,7 +9,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="ancStudentDash" prefHeight="647.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.StudentController">
+<Pane fx:id="ancStudentDash" prefHeight="647.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.UserController">
    <children>
       <Pane layoutX="144.0" layoutY="32.0" prefHeight="566.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 50;">
          <effect>
