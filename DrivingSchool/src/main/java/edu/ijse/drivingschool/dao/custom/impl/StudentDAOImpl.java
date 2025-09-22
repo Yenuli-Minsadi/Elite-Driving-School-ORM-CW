@@ -14,7 +14,20 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        Session session = factoryConfiguration.getSession();
+
+        String nextId = null;
+        try {
+            String lastId = session.createQuery
+                            ("SELECT s.studentId FROM Student s ORDER BY s.studentId DESC", String.class)
+                    .setMaxResults(1).uniqueResult();
+
+            nextId = (lastId == null) ? "S001" : String.format("S%03d", Integer.parseInt(lastId.substring(1))+1);
+
+        } finally {
+            session.close();
+        }
+        return nextId;
     }
 
     @Override

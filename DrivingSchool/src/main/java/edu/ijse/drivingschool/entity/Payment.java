@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,14 +16,14 @@ import java.time.LocalDate;
 public class Payment {
     @Id
     private String paymentId;
-    private String registrationId;
 
     @ManyToOne
-    @JoinColumn(name="student_id")
-    private Student student;
+    @JoinColumn(name="registration_id", nullable = false)
+    private Registration registration;
 
     private String paymentType;
     private String paymentMethod;
     private String paymentAmount;
     private LocalDate paymentDate;
+    private String status;//completed, pending
 }

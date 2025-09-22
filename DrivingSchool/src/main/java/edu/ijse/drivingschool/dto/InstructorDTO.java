@@ -15,4 +15,5 @@ public class InstructorDTO {
     private String phone;
     private String email;
     private String address;
+    private String availability;
 }

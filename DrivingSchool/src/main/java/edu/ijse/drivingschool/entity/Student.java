@@ -19,12 +19,6 @@ public class Student {
     private String firstName;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<Lesson> lesson;
-
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<Payment> payment;
-
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Registration> registration;
 
     private String lastName;

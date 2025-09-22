@@ -13,9 +13,7 @@ public class LessonDTO {
     private String lessonId;
     private String lessonName;
     private String lessonDescription;
-    private String studentId;
-//    private String registrationId;
-    private String courseId;
+    private String registrationId;
     private String instructorId;
     private LocalDate lessonDate;
     private String lessonTime;

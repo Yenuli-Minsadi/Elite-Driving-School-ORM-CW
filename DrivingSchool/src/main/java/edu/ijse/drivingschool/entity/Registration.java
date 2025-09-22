@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,7 +16,6 @@ import java.time.LocalDate;
 public class Registration {
     @Id
     private String registrationId;
-//    private String studentId;
 
     @ManyToOne
     @JoinColumn(name="student_id")
@@ -25,9 +25,11 @@ public class Registration {
     @JoinColumn(name="course_id")
     private Course course;
 
-//    private String courseId;
-    private String processedBy; //user id fk
-    private String paymentId;
     private LocalDate registrationDate;
-    private String status;
+
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
+    private List<Payment> payment;
+
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
+    private List<Lesson> lesson;
 }

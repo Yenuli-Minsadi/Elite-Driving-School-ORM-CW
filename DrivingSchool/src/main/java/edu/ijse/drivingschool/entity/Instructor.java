@@ -25,4 +25,7 @@ public class Instructor {
     private String phone;
     private String email;
     private String address;
+    private String availability;
+
+
 }

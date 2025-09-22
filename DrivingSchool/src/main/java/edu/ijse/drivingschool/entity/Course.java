@@ -17,13 +17,10 @@ public class Course {
     @Id
     private String courseId;
     private String courseName;
-
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    private List <Lesson> lesson;
+    private String description;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Registration> registration;
-
 
     private String courseType;
     private String courseFee;
