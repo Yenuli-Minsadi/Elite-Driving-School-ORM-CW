@@ -16,15 +16,15 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView fx:id="tblStudent" layoutX="14.0" layoutY="308.0" prefHeight="232.0" prefWidth="886.0">
+            <TableView fx:id="tblStudent" layoutX="14.0" layoutY="308.0" onMouseClicked="#onClickTable" prefHeight="232.0" prefWidth="886.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="SID" />
-                <TableColumn prefWidth="104.0" text="First Name" />
-                  <TableColumn prefWidth="113.0" text="Last Name" />
-                  <TableColumn prefWidth="176.0" text="Email" />
-                  <TableColumn prefWidth="154.0" text="Phone" />
-                  <TableColumn prefWidth="121.0" text="Address" />
-                  <TableColumn prefWidth="142.0" text="DOB" />
+                <TableColumn fx:id="colId" prefWidth="75.0" text="SID" />
+                <TableColumn fx:id="colFn" prefWidth="104.0" text="First Name" />
+                  <TableColumn fx:id="colLn" prefWidth="113.0" text="Last Name" />
+                  <TableColumn fx:id="colEmail" prefWidth="176.0" text="Email" />
+                  <TableColumn fx:id="colPhone" prefWidth="154.0" text="Phone" />
+                  <TableColumn fx:id="colAddress" prefWidth="121.0" text="Address" />
+                  <TableColumn fx:id="colDOB" prefWidth="142.0" text="DOB" />
               </columns>
             </TableView>
             <Label layoutX="56.0" layoutY="74.0" text="Student ID" />
