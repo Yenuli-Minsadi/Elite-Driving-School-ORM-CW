@@ -25,4 +25,13 @@ public class Course {
     private String courseType;
     private String courseFee;
     private String duration;
+
+    public Course(String courseId, String courseName, String courseDescription, String courseType, String courseFee, String duration) {
+        this.courseId=courseId;
+        this.courseName=courseName;
+        this.description=courseDescription;
+        this.courseType=courseType;
+        this.courseFee=courseFee;
+        this.duration=duration;
+    }
 }

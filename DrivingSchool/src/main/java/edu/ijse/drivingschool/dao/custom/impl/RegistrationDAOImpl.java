@@ -14,7 +14,20 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        Session session = factoryConfiguration.getSession();
+
+        String nextId = null;
+        try {
+            String lastId = session.createQuery
+                            ("SELECT r.registrationId FROM Registration r ORDER BY r.registrationId DESC", String.class)
+                    .setMaxResults(1).uniqueResult();
+
+            nextId = (lastId == null) ? "R001" : String.format("R%03d", Integer.parseInt(lastId.substring(1))+1);
+
+        } finally {
+            session.close();
+        }
+        return nextId;
     }
 
     @Override
@@ -83,7 +96,7 @@ public class RegistrationDAOImpl implements RegistrationDAO {
     public List<Registration> getAll() {
         Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM Registration, Registration.class").list();
+            return session.createQuery("FROM Registration", Registration.class).list();
         } finally {
             session.close();
         }

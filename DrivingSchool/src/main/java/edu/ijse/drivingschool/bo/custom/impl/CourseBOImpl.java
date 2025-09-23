@@ -4,6 +4,8 @@ import edu.ijse.drivingschool.bo.custom.CourseBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dao.custom.CourseDAO;
 import edu.ijse.drivingschool.dto.CourseDTO;
+import edu.ijse.drivingschool.entity.Course;
+import edu.ijse.drivingschool.entity.Student;
 
 import java.util.List;
 
@@ -13,12 +15,19 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        return courseDAO.getNextId();
     }
 
     @Override
     public boolean save(CourseDTO courseDTO) {
-        return false;
+        return courseDAO.save(new Course(
+                courseDTO.getCourseId(),
+                courseDTO.getCourseName(),
+                courseDTO.getCourseDescription(),
+                courseDTO.getCourseType(),
+                courseDTO.getCourseFee(),
+                courseDTO.getDuration())
+        );
     }
 
     @Override
@@ -34,5 +43,10 @@ public class CourseBOImpl implements CourseBO {
     @Override
     public List<CourseDTO> getAll() {
         return List.of();
+    }
+
+    @Override
+    public Course getById(String courseId) throws Exception {
+        return courseDAO.getById(courseId);
     }
 }

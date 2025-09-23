@@ -10,14 +10,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class StudentController {
+public class StudentController implements Initializable {
 
     @FXML
     private Pane ancStudentDash;
@@ -131,4 +134,18 @@ public class StudentController {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            loadNextId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong.").show();
+        }
+    }
+
+    private void loadNextId() throws Exception {
+        String nextId = studentBO.getNextId();
+        lblSid.setText(nextId);
+    }
 }

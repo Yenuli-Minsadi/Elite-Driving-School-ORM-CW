@@ -7,6 +7,7 @@ module edu.ijse.drivingschool {
     requires jdk.xml.dom;
     requires java.security.jgss;
     requires jbcrypt;
+    requires java.desktop;
 
     // Allow JavaFX runtime to access AppInitializer
     opens edu.ijse.drivingschool to javafx.graphics;

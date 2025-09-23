@@ -90,7 +90,7 @@ public class LessonDAOImpl implements LessonDAO {
     public List<Lesson> getAll() {
         Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM Lesson, Lesson.class").list();
+            return session.createQuery("FROM Lesson", Lesson.class).list();
         } finally {
             session.close();
         }

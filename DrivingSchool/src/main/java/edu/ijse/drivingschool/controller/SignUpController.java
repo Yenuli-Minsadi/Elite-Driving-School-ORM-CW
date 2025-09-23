@@ -7,11 +7,17 @@ import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -124,8 +130,18 @@ public class SignUpController implements Initializable {
     }
 
     @FXML
-    void lblLoginOnMouseClicked(MouseEvent event) {
+    void lblLoginOnMouseClicked(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LogIn.fxml"));
+        Parent load = loader.load();
 
+        Stage signUpStage = new Stage();
+        signUpStage.setTitle("SignUp");
+        signUpStage.setScene(new Scene(load));
+        signUpStage.initModality(Modality.APPLICATION_MODAL);
+        signUpStage.show();
+
+        Stage currentStage = (Stage) lblLogin.getScene().getWindow();
+        currentStage.close();
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {

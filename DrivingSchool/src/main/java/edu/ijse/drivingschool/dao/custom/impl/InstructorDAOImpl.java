@@ -83,7 +83,7 @@ public class InstructorDAOImpl implements InstructorDAO {
     public List<Instructor> getAll() {
         Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM Instructor, Instructor.class").list();
+            return session.createQuery("FROM Instructor", Instructor.class).list();
         } finally {
             session.close();
         }

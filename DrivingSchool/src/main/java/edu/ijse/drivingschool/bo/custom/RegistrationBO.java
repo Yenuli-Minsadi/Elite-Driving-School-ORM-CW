@@ -8,7 +8,7 @@ import java.util.List;
 public interface RegistrationBO extends SuperBO {
 
     public String getNextId() throws Exception;
-    public boolean save(RegistrationDTO registrationDTO);
+    public boolean save(RegistrationDTO registrationDTO) throws Exception;
     public boolean update(RegistrationDTO registrationDTO);
     public boolean delete(String id);
     public List<RegistrationDTO> getAll();

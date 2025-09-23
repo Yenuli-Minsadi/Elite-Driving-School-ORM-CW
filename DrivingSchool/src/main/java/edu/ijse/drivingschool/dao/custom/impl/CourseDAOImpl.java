@@ -3,6 +3,8 @@ package edu.ijse.drivingschool.dao.custom.impl;
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.CourseDAO;
 import edu.ijse.drivingschool.entity.Course;
+import edu.ijse.drivingschool.entity.Student;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,7 +16,20 @@ public class CourseDAOImpl implements CourseDAO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        Session session = factoryConfiguration.getSession();
+
+        String nextId = null;
+        try {
+            String lastId = session.createQuery
+                            ("SELECT c.courseId FROM Course c ORDER BY c.courseId DESC", String.class)
+                    .setMaxResults(1).uniqueResult();
+
+            nextId = (lastId == null) ? "C001" : String.format("C%03d", Integer.parseInt(lastId.substring(1))+1);
+
+        } finally {
+            session.close();
+        }
+        return nextId;
     }
 
     @Override
@@ -83,9 +98,19 @@ public class CourseDAOImpl implements CourseDAO {
     public List<Course> getAll() {
         Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM Course, Course.class").list();
+            return session.createQuery("FROM Course", Course.class).list();
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Course getById(String courseId) throws Exception {
+
+        try (Session session = FactoryConfiguration.getInstance().getSession()){
+            return session.get(Course.class, courseId);
+        } catch (HibernateException e) {
+            throw new RuntimeException("Failed to fetch student with id" + courseId, e);
         }
     }
 }

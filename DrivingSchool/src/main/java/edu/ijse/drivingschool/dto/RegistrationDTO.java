@@ -14,4 +14,5 @@ public class RegistrationDTO {
     private String studentId;
     private String courseId;
     private LocalDate registrationDate;
+
 }

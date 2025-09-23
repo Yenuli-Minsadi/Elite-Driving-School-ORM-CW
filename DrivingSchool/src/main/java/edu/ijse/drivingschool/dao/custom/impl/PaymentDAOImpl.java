@@ -74,7 +74,7 @@ public class PaymentDAOImpl implements PaymentDAO {
     public List<Payment> getAll() {
         Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM Payment, Payment.class").list();
+            return session.createQuery("FROM Payment", Payment.class).list();
         } finally {
             session.close();
         }

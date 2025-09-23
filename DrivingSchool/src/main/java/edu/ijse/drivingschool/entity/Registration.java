@@ -32,4 +32,12 @@ public class Registration {
 
     @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
     private List<Lesson> lesson;
+
+    public Registration(String registrationId, Student studentId, Course courseId, LocalDate registrationDate) {
+        this.registrationId = registrationId;
+        this.student = studentId;   // assign actual Student object
+        this.course = courseId;     // assign actual Course object
+        this.registrationDate = registrationDate;
+    }
+
 }

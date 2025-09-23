@@ -6,6 +6,7 @@ import edu.ijse.drivingschool.dao.custom.StudentDAO;
 import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.entity.Student;
 
+import javax.print.DocFlavor;
 import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
@@ -14,7 +15,7 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        return studentDAO.getNextId();
     }
 
     @Override
@@ -37,5 +38,10 @@ public class StudentBOImpl implements StudentBO {
     @Override
     public List<StudentDTO> getAll() {
         return List.of();
+    }
+
+    @Override
+    public Student getById(String studentId) throws Exception {
+        return studentDAO.getById(studentId);
     }
 }

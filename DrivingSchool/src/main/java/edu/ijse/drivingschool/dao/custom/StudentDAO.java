@@ -11,4 +11,5 @@ public interface StudentDAO extends CrudDAO<Student> {
     public boolean update(Student entity);
     public boolean delete(String id);
     public List<Student> getAll();
+    Student getById(String studentId) throws Exception;
 }
