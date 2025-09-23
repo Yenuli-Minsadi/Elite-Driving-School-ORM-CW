@@ -52,4 +52,9 @@ public class RegistrationBOImpl implements RegistrationBO {
     public List<RegistrationDTO> getAll() {
         return List.of();
     }
+
+    @Override
+    public Registration getById(String registrationId) throws Exception {
+        return registrationDAO.getById(registrationId);
+    }
 }

@@ -15,7 +15,20 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        Session session = factoryConfiguration.getSession();
+
+        String nextId = null;
+        try {
+            String lastId = session.createQuery
+                            ("SELECT p.paymentId FROM Payment p ORDER BY p.paymentId DESC", String.class)
+                    .setMaxResults(1).uniqueResult();
+
+            nextId = (lastId == null) ? "P001" : String.format("P%03d", Integer.parseInt(lastId.substring(1))+1);
+
+        } finally {
+            session.close();
+        }
+        return nextId;
     }
 
     @Override

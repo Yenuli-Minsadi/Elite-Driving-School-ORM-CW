@@ -3,6 +3,8 @@ package edu.ijse.drivingschool.dao.custom.impl;
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.RegistrationDAO;
 import edu.ijse.drivingschool.entity.Registration;
+import edu.ijse.drivingschool.entity.Student;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -99,6 +101,15 @@ public class RegistrationDAOImpl implements RegistrationDAO {
             return session.createQuery("FROM Registration", Registration.class).list();
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Registration getById(String registrationId) throws Exception {
+        try (Session session = FactoryConfiguration.getInstance().getSession()){
+            return session.get(Registration.class, registrationId);
+        } catch (HibernateException e) {
+            throw new RuntimeException("Failed to fetch student with id" + registrationId, e);
         }
     }
 }

@@ -2,6 +2,8 @@ package edu.ijse.drivingschool.bo.custom;
 
 import edu.ijse.drivingschool.bo.SuperBO;
 import edu.ijse.drivingschool.dto.RegistrationDTO;
+import edu.ijse.drivingschool.entity.Registration;
+import edu.ijse.drivingschool.entity.Student;
 
 import java.util.List;
 
@@ -12,5 +14,6 @@ public interface RegistrationBO extends SuperBO {
     public boolean update(RegistrationDTO registrationDTO);
     public boolean delete(String id);
     public List<RegistrationDTO> getAll();
+    Registration getById(String registrationId) throws Exception;
 
 }

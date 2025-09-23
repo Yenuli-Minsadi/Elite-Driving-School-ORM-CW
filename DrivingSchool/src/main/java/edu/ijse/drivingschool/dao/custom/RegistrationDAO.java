@@ -11,4 +11,5 @@ public interface RegistrationDAO extends CrudDAO<Registration> {
     public boolean update(Registration entity);
     public boolean delete(String id);
     public List<Registration> getAll();
+    Registration getById(String registrationId) throws Exception;
 }
