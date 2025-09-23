@@ -84,7 +84,7 @@ public class RegistrationDAOImpl implements RegistrationDAO {
             if (registration == null) {
                 throw new Exception("Cannot delete registration, Registration ID not found!");
             }
-            session.remove(id);
+            session.remove(registration);
             transaction.commit();
             return true;
         } catch (Exception e) {

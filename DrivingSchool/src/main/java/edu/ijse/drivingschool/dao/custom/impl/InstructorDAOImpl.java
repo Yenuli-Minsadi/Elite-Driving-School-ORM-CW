@@ -84,7 +84,7 @@ public class InstructorDAOImpl implements InstructorDAO {
             if (instructor == null) {
                 throw new Exception("Cannot delete instructor, Instructor ID not found!");
             }
-            session.remove(id);
+            session.remove(instructor);
             transaction.commit();
             return true;
         } catch (Exception e) {

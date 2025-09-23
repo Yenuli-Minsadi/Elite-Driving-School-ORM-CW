@@ -2,6 +2,7 @@ package edu.ijse.drivingschool.dao.custom.impl;
 
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
+import edu.ijse.drivingschool.entity.Student;
 import edu.ijse.drivingschool.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -42,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
         try{
             User existsUser = session.get(User.class, entity.getUserId());
             if(existsUser != null){
-                throw new Exception("Therapist already exists");
+                throw new Exception("User already exists");
             }
             session.persist(entity);
             transaction.commit();
@@ -59,12 +60,43 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean update(User entity) {
-        return false;
+        Session session = factoryConfiguration.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            User existUser = session.get(User.class, entity.getUserId());
+
+            if (existUser == null) {
+                throw new Exception("User doesn't exist, User ID not found!");
+            }
+            session.merge(entity);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return false;
+        }
     }
 
     @Override
     public boolean delete(String id) {
-        return false;
+        Session session = factoryConfiguration.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            User user = session.get(User.class,id);
+            if (user == null) {
+                throw new Exception("Cannot delete user, User ID not found!");
+            }
+            session.remove(user);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return false;
+        }
     }
 
     @Override

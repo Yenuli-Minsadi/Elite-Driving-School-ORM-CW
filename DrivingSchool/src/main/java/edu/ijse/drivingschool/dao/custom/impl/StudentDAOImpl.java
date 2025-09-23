@@ -84,7 +84,7 @@ public class StudentDAOImpl implements StudentDAO {
             if (student == null) {
                 throw new Exception("Cannot delete student, Student ID not found!");
             }
-            session.remove(id);
+            session.remove(student);
             transaction.commit();
             return true;
         } catch (Exception e) {

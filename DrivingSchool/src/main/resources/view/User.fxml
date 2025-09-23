@@ -16,7 +16,7 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView fx:id="tblUser" layoutX="14.0" layoutY="308.0" prefHeight="232.0" prefWidth="886.0">
+            <TableView fx:id="tblUser" layoutX="14.0" layoutY="308.0" onMouseClicked="#onClickTable" prefHeight="232.0" prefWidth="886.0">
                <columns>
                   <TableColumn fx:id="colUid" prefWidth="75.0" text="UID" />
                   <TableColumn fx:id="colFn" prefWidth="104.0" text="First Name" />

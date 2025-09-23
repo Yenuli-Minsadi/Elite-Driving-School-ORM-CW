@@ -17,4 +17,7 @@ module edu.ijse.drivingschool {
 
     // 👇 Allow Hibernate to access entities via reflection
     opens edu.ijse.drivingschool.entity to org.hibernate.orm.core;
+
+    // 👇 Allow JavaFX TableView (PropertyValueFactory) to access your TM classes
+    opens edu.ijse.drivingschool.dto.tm to javafx.base;
 }

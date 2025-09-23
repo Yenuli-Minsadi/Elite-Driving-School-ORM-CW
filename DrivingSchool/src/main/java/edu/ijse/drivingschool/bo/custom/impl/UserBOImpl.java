@@ -6,6 +6,7 @@ import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserBOImpl implements UserBO {
@@ -26,12 +27,14 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public boolean update(UserDTO userDTO) {
-        return false;
+        return userDAO.update(new User(userDTO.getUserId(), userDTO.getFirstName(),
+                userDTO.getLastName(), userDTO.getUsername(), userDTO.getEmail(),
+                userDTO.getPhone(), userDTO.getPassword(), userDTO.getRole()));
     }
 
     @Override
     public boolean delete(String id) {
-        return false;
+        return userDAO.delete(id);
     }
 
     @Override
@@ -41,6 +44,13 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public List<UserDTO> getAll() {
-        return List.of();
+        List<User> entity=userDAO.getAll();
+        List<UserDTO>userDTO=new ArrayList<>();
+        for( User user :entity){
+            userDTO.add(new UserDTO(
+                    user.getUserId(), user.getFirstName(), user.getLastName(), user.getUsername(),
+                    user.getEmail(), user.getPhone(), user.getPassword(), user.getRole()));
+        }
+        return userDTO;
     }
 }

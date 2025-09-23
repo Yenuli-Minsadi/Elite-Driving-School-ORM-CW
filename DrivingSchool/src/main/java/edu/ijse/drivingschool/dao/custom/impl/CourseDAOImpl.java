@@ -84,7 +84,7 @@ public class CourseDAOImpl implements CourseDAO {
             if (course == null) {
                 throw new Exception("Cannot delete course, Course ID not found!");
             }
-            session.remove(id);
+            session.remove(course);
             transaction.commit();
             return true;
         } catch (Exception e) {
