@@ -4,6 +4,7 @@ import edu.ijse.drivingschool.bo.custom.InstructorBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dao.custom.InstructorDAO;
 import edu.ijse.drivingschool.dto.InstructorDTO;
+import edu.ijse.drivingschool.entity.Instructor;
 
 import java.util.List;
 
@@ -13,12 +14,21 @@ public class InstructorBOImpl implements InstructorBO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        return instructorDAO.getNextId();
     }
 
     @Override
     public boolean save(InstructorDTO instructorDTO) {
-        return false;
+        return instructorDAO.save(new Instructor(
+                instructorDTO.getInstructorId(),
+                instructorDTO.getFirstName(),
+                instructorDTO.getLastName(),
+                instructorDTO.getSpecialization(),
+                instructorDTO.getPhone(),
+                instructorDTO.getEmail(),
+                instructorDTO.getAddress(),
+                instructorDTO.getAvailability()
+        ));
     }
 
     @Override
@@ -34,5 +44,10 @@ public class InstructorBOImpl implements InstructorBO {
     @Override
     public List<InstructorDTO> getAll() {
         return List.of();
+    }
+
+    @Override
+    public Instructor getById(String instructorId) throws Exception {
+        return instructorDAO.getById(instructorId);
     }
 }

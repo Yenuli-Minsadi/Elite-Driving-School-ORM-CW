@@ -3,6 +3,8 @@ package edu.ijse.drivingschool.dao.custom.impl;
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.InstructorDAO;
 import edu.ijse.drivingschool.entity.Instructor;
+import edu.ijse.drivingschool.entity.Registration;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,7 +16,20 @@ public class InstructorDAOImpl implements InstructorDAO {
 
     @Override
     public String getNextId() throws Exception {
-        return "";
+        Session session = factoryConfiguration.getSession();
+
+        String nextId = null;
+        try {
+            String lastId = session.createQuery
+                            ("SELECT i.instructorId FROM Instructor i ORDER BY  i.instructorId DESC", String.class)
+                    .setMaxResults(1).uniqueResult();
+
+            nextId = (lastId == null) ? "I001" : String.format("I%03d", Integer.parseInt(lastId.substring(1))+1);
+
+        } finally {
+            session.close();
+        }
+        return nextId;
     }
 
     @Override
@@ -86,6 +101,15 @@ public class InstructorDAOImpl implements InstructorDAO {
             return session.createQuery("FROM Instructor", Instructor.class).list();
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Instructor getById(String instructorId) throws Exception {
+        try (Session session = FactoryConfiguration.getInstance().getSession()){
+            return session.get(Instructor.class, instructorId);
+        } catch (HibernateException e) {
+            throw new RuntimeException("Failed to fetch student with id" + instructorId, e);
         }
     }
 }

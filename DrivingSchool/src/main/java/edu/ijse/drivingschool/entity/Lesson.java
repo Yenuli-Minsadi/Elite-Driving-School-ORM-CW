@@ -16,6 +16,7 @@ public class Lesson {
     @Id
     private String lessonId;
     private String lessonName;
+    private String lessonDescription;
 
     // Each lesson belongs to a registration (student + course)
     @ManyToOne
@@ -26,7 +27,6 @@ public class Lesson {
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
-    private String lessonDescription;
     private LocalDate lessonDate;
     private String lessonTime;
     private String status;

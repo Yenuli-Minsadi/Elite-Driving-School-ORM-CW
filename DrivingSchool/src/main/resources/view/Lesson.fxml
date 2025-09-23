@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -28,7 +30,13 @@
             </TableView>
             <Label layoutX="320.0" layoutY="77.0" text="Registration ID" />
             <Label layoutX="58.0" layoutY="230.0" text="Status" />
-            <TextField layoutX="136.0" layoutY="226.0" />
+            <Label fx:id="lblLessonId" layoutX="136.0" layoutY="77.0" text="L001" />
+            <DatePicker fx:id="dateLdate" layoutX="399.0" layoutY="168.0" />
+            <ComboBox fx:id="cmbStatus" layoutX="121.0" layoutY="226.0" prefWidth="150.0" />
+            <Label layoutX="38.0" layoutY="128.0" text="Lesson Name" />
+            <TextField fx:id="txtLname" layoutX="122.0" layoutY="124.0" />
+            <TextField fx:id="txtDesc" layoutX="411.0" layoutY="112.0" />
+            <Label layoutX="299.0" layoutY="116.0" text="Lesson Description" />
          </children>
       </Pane>
       <Label layoutX="207.0" layoutY="111.0" text="Lesson ID" />
@@ -36,14 +44,13 @@
       <Label layoutX="203.0" layoutY="201.0" text="Instructor ID" />
       <Label layoutX="478.0" layoutY="201.0" text="Lesson Date" />
       <Label layoutX="753.0" layoutY="201.0" text="Lesson Time" />
-      <TextField layoutX="552.0" layoutY="107.0" />
-      <TextField layoutX="827.0" layoutY="107.0" />
-      <TextField layoutX="279.0" layoutY="197.0" />
-      <TextField layoutX="552.0" layoutY="197.0" />
-      <TextField layoutX="827.0" layoutY="197.0" />
-      <Button layoutX="788.0" layoutY="252.0" mnemonicParsing="false" text="Save" />
-      <Button layoutX="853.0" layoutY="252.0" mnemonicParsing="false" text="Updatde" />
-      <Button layoutX="939.0" layoutY="252.0" mnemonicParsing="false" text="Refresh" />
-      <Button layoutX="989.0" layoutY="308.0" mnemonicParsing="false" text="Delete" />
+      <TextField fx:id="txtRid" layoutX="552.0" layoutY="107.0" />
+      <TextField fx:id="txtCid" layoutX="827.0" layoutY="107.0" />
+      <TextField fx:id="txtIid" layoutX="279.0" layoutY="197.0" />
+      <TextField fx:id="txtLtime" layoutX="827.0" layoutY="197.0" />
+      <Button fx:id="btnSave" layoutX="788.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" />
+      <Button fx:id="btnUpdate" layoutX="853.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Updatde" />
+      <Button fx:id="btnRefresh" layoutX="939.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" text="Refresh" />
+      <Button fx:id="btnDelete" layoutX="989.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete" />
    </children>
 </Pane>

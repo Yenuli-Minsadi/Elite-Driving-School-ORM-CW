@@ -27,5 +27,14 @@ public class Instructor {
     private String address;
     private String availability;
 
-
+    public Instructor(String instructorId, String firstName, String lastName, String specialization, String phone, String email, String address, String availability) {
+        this.instructorId=instructorId;
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.specialization=specialization;
+        this.phone=phone;
+        this.email=email;
+        this.address=address;
+        this.availability=availability;
+    }
 }
