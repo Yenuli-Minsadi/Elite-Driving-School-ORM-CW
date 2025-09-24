@@ -4,8 +4,11 @@ import edu.ijse.drivingschool.bo.custom.InstructorBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dao.custom.InstructorDAO;
 import edu.ijse.drivingschool.dto.InstructorDTO;
+import edu.ijse.drivingschool.dto.LessonDTO;
 import edu.ijse.drivingschool.entity.Instructor;
+import edu.ijse.drivingschool.entity.Lesson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InstructorBOImpl implements InstructorBO {
@@ -33,17 +36,33 @@ public class InstructorBOImpl implements InstructorBO {
 
     @Override
     public boolean update(InstructorDTO instructorDTO) {
-        return false;
+        return instructorDAO.update(new Instructor(
+                instructorDTO.getInstructorId(),
+                instructorDTO.getFirstName(),
+                instructorDTO.getLastName(),
+                instructorDTO.getSpecialization(),
+                instructorDTO.getPhone(),
+                instructorDTO.getEmail(),
+                instructorDTO.getAddress(),
+                instructorDTO.getAvailability()
+        ));
     }
 
     @Override
     public boolean delete(String id) {
-        return false;
+        return instructorDAO.delete(id);
     }
 
     @Override
     public List<InstructorDTO> getAll() {
-        return List.of();
+        List<Instructor> entity=instructorDAO.getAll();
+        List<InstructorDTO>instructorDTO=new ArrayList<>();
+        for( Instructor instructor :entity){
+            instructorDTO.add(new InstructorDTO(
+                    instructor.getInstructorId(), instructor.getFirstName(), instructor.getLastName(), instructor.getSpecialization(),
+                    instructor.getPhone(), instructor.getEmail(), instructor.getAddress(), instructor.getAvailability()));
+        }
+        return instructorDTO;
     }
 
     @Override

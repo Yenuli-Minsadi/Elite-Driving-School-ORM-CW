@@ -27,6 +27,10 @@ public class Lesson {
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
+    @ManyToOne
+    @JoinColumn(name="course_id")
+    private Course course;
+
     private LocalDate lessonDate;
     private String lessonTime;
     private String status;

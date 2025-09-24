@@ -17,14 +17,15 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView layoutX="13.0" layoutY="313.0" prefHeight="223.0" prefWidth="887.0">
+            <TableView fx:id="tblPayment" layoutX="13.0" layoutY="313.0" onMouseClicked="#onClickTable" prefHeight="223.0" prefWidth="887.0">
               <columns>
-                <TableColumn prefWidth="113.0" text="PID" />
-                <TableColumn prefWidth="117.0" text="REG_ID" />
-                  <TableColumn prefWidth="190.0" text="Payment Type" />
-                  <TableColumn prefWidth="184.0" text="Payment Method" />
-                  <TableColumn prefWidth="138.0" text="Amount" />
-                  <TableColumn prefWidth="144.0" text="Date" />
+                <TableColumn fx:id="colPid" prefWidth="113.0" text="PID" />
+                <TableColumn fx:id="colRid" prefWidth="117.0" text="REG_ID" />
+                  <TableColumn fx:id="colPtype" prefWidth="190.0" text="Payment Type" />
+                  <TableColumn fx:id="colPmethod" prefWidth="184.0" text="Payment Method" />
+                  <TableColumn fx:id="colAmount" prefWidth="64.0" text="Amount" />
+                  <TableColumn fx:id="colDate" prefWidth="91.0" text="Date" />
+                  <TableColumn fx:id="colStatus" prefWidth="127.0" text="Status" />
               </columns>
             </TableView>
             <Label layoutX="312.0" layoutY="79.0" text="Registration ID" />

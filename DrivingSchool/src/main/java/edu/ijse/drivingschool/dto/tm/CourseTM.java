@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class CourseTM {
     private String courseId;
     private String courseName;
+    private String courseDescription;
     private String courseType;
     private String courseFee;
     private String duration;

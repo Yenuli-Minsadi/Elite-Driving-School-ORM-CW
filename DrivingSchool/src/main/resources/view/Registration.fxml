@@ -16,14 +16,12 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView layoutX="10.0" layoutY="326.0" prefHeight="221.0" prefWidth="893.0">
+            <TableView fx:id="tblReg" layoutX="10.0" layoutY="326.0" onMouseClicked="#onClickTable" prefHeight="221.0" prefWidth="893.0">
               <columns>
-                <TableColumn prefWidth="126.0" text="REG_ID" />
-                <TableColumn prefWidth="140.0" text="SID" />
-                  <TableColumn prefWidth="147.0" text="CID" />
-                  <TableColumn prefWidth="131.0" text="PID" />
-                  <TableColumn prefWidth="203.0" text="Registration_Date" />
-                  <TableColumn prefWidth="145.0" text="Status" />
+                <TableColumn fx:id="colRegId" prefWidth="268.0" text="REG_ID" />
+                <TableColumn fx:id="colSid" prefWidth="267.0" text="SID" />
+                  <TableColumn fx:id="colCid" prefWidth="154.0" text="CID" />
+                  <TableColumn fx:id="colRegDate" prefWidth="203.0" text="Registration_Date" />
               </columns>
             </TableView>
             <Label layoutX="22.0" layoutY="71.0" text="Registration ID" />

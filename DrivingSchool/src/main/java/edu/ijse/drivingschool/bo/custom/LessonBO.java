@@ -9,7 +9,7 @@ public interface LessonBO extends SuperBO {
 
     public String getNextId() throws Exception;
     public boolean save(LessonDTO lessonDTO) throws Exception;
-    public boolean update(LessonDTO lessonDTO);
+    public boolean update(LessonDTO lessonDTO) throws Exception;
     public boolean delete(String id);
     public List<LessonDTO> getAll();
 

@@ -15,13 +15,14 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView layoutX="13.0" layoutY="333.0" prefHeight="200.0" prefWidth="886.0">
+            <TableView fx:id="tblCourse" layoutX="13.0" layoutY="333.0" onMouseClicked="#onClickTable" prefHeight="200.0" prefWidth="886.0">
               <columns>
-                <TableColumn prefWidth="138.0" text="CID" />
-                <TableColumn prefWidth="240.0" text="Course Name" />
-                  <TableColumn prefWidth="169.0" text="Course Type" />
-                  <TableColumn prefWidth="200.0" text="Course Fee" />
-                  <TableColumn prefWidth="138.0" text="Duration" />
+                <TableColumn fx:id="colId" prefWidth="138.0" text="CID" />
+                <TableColumn fx:id="colCname" prefWidth="240.0" text="Course Name" />
+                  <TableColumn fx:id="colCtype" prefWidth="132.0" text="Course Type" />
+                  <TableColumn fx:id="colCfee" prefWidth="137.0" text="Course Fee" />
+                  <TableColumn fx:id="colDuration" prefWidth="131.0" text="Duration" />
+                  <TableColumn fx:id="colDesc" prefWidth="107.0" text="Description" />
               </columns>
             </TableView>
             <Label layoutX="338.0" layoutY="82.0" text="Course Name" />

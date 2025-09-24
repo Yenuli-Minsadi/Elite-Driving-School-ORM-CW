@@ -11,7 +11,7 @@ public interface RegistrationBO extends SuperBO {
 
     public String getNextId() throws Exception;
     public boolean save(RegistrationDTO registrationDTO) throws Exception;
-    public boolean update(RegistrationDTO registrationDTO);
+    public boolean update(RegistrationDTO registrationDTO) throws Exception;
     public boolean delete(String id);
     public List<RegistrationDTO> getAll();
     Registration getById(String registrationId) throws Exception;

@@ -17,15 +17,17 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView layoutX="16.0" layoutY="311.0" prefHeight="231.0" prefWidth="881.0">
+            <TableView fx:id="tblLesson" layoutX="16.0" layoutY="311.0" onMouseClicked="#onClickTable" prefHeight="231.0" prefWidth="881.0">
               <columns>
-                <TableColumn prefWidth="114.0" text="Lesson ID" />
-                <TableColumn prefWidth="115.0" text="REG_ID" />
-                  <TableColumn prefWidth="98.0" text="CID" />
-                  <TableColumn prefWidth="111.0" text="IID" />
-                  <TableColumn prefWidth="180.0" text="Lesson Date" />
-                  <TableColumn prefWidth="140.0" text="Lesson Time" />
-                  <TableColumn prefWidth="122.0" text="Status" />
+                <TableColumn fx:id="colLid" prefWidth="95.0" text="Lesson ID" />
+                <TableColumn fx:id="colRid" prefWidth="106.0" text="REG_ID" />
+                  <TableColumn fx:id="colCid" prefWidth="103.0" text="CID" />
+                  <TableColumn fx:id="colIid" prefWidth="100.0" text="IID" />
+                  <TableColumn fx:id="colLdate" prefWidth="107.0" text="Lesson Date" />
+                  <TableColumn fx:id="colLtime" prefWidth="116.0" text="Lesson Time" />
+                  <TableColumn fx:id="colStatus" prefWidth="70.0" text="Status" />
+                  <TableColumn fx:id="colLname" prefWidth="94.0" text="Lesson Name" />
+                  <TableColumn fx:id="colDesc" prefWidth="89.0" text="Description" />
               </columns>
             </TableView>
             <Label layoutX="320.0" layoutY="77.0" text="Registration ID" />
