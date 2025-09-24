@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -20,7 +21,7 @@
                   <Button fx:id="btnCourse" layoutX="551.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnCourseOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Course" />
                   <Button fx:id="btnRegister" layoutX="291.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Registration" />
                   <Button fx:id="btnLesson" layoutX="677.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnLessonOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Lesson" />
-                  <Button fx:id="btnCoordinatoor" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnCoordinatorOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Coordinator" />
+                  <Button fx:id="btnUser" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnUserOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="User" />
                   <Button fx:id="btnPayment" layoutX="422.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnPaymentOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Payment" />
                   <Button fx:id="btnInstructor" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnInstructorOnAction" prefHeight="30.0" prefWidth="85.0" style="-fx-background-radius: 50;" text="Instructor" />
                </children>
@@ -39,7 +40,11 @@
                   </Pane>
                </children>
             </Pane>
-            <Button fx:id="btnUser" layoutX="1074.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnUserOnAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 100;" text="Users" />
+            <Label fx:id="lblLogout" layoutX="1117.0" layoutY="21.0" onMouseClicked="#onLogoutClick" text="Logout&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Malgun Gothic" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
