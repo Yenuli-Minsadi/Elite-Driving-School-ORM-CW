@@ -206,9 +206,9 @@ public class CourseController implements Initializable {
 
         colId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
         colCname.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-        colDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colCtype.setCellValueFactory(new PropertyValueFactory<>("type"));
-        colCfee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+        colDesc.setCellValueFactory(new PropertyValueFactory<>("courseDescription"));
+        colCtype.setCellValueFactory(new PropertyValueFactory<>("courseType"));
+        colCfee.setCellValueFactory(new PropertyValueFactory<>("courseFee"));
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
 
         try {

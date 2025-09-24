@@ -138,7 +138,7 @@ public class LogInController {
             Stage dashboardStage = new Stage();
             dashboardStage.setTitle("Elite Driving School Dashboard");
             dashboardStage.setScene(new Scene(root));
-            dashboardStage.setMaximized(true); // full screen
+//            dashboardStage.setMaximized(true); // full screen
             dashboardStage.show();
 
             //Close the login window

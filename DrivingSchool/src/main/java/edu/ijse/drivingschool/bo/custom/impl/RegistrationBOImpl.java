@@ -45,7 +45,7 @@ public class RegistrationBOImpl implements RegistrationBO {
         Student student = studentDAO.getById(registrationDTO.getStudentId());
         Course course = courseDAO.getById(registrationDTO.getCourseId());
 
-        return registrationDAO.save(new Registration(
+        return registrationDAO.update(new Registration(
                 registrationDTO.getRegistrationId(),
                 student,
                 course,

@@ -3,7 +3,9 @@ package edu.ijse.drivingschool.dao.custom.impl;
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.LessonDAO;
 import edu.ijse.drivingschool.entity.Course;
+import edu.ijse.drivingschool.entity.Instructor;
 import edu.ijse.drivingschool.entity.Lesson;
+import edu.ijse.drivingschool.entity.Registration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -31,31 +33,38 @@ public class LessonDAOImpl implements LessonDAO {
         return nextId;
     }
 
+    // LessonDAOImpl.java
     @Override
-    public boolean save(Lesson entity) {
-        Session session = factoryConfiguration.getSession();
-        Transaction transaction = session.beginTransaction();
+    public boolean save(Lesson lesson) {
+        Transaction transaction = null;
+        try (Session session = factoryConfiguration.getSession()) {
 
-        try {
-            Lesson existLesson = session.get(Lesson.class, entity.getLessonId());
+            // Make sure the associations are managed entities
+            Instructor managedInstructor = session.get(Instructor.class, lesson.getInstructor().getInstructorId());
+            Registration managedRegistration = session.get(Registration.class, lesson.getRegistration().getRegistrationId());
+            Course managedCourse = session.get(Course.class, lesson.getCourse().getCourseId());
 
-            if (existLesson != null) {
-                throw new Exception("Lesson already exists.");
+            if (managedInstructor == null || managedRegistration == null || managedCourse == null) {
+                throw new RuntimeException("Instructor, Registration, or Course not found in DB!");
             }
-//            if (entity.getLessonId() == null || entity.getLessonName() == null ||
-//                    entity.getLessonDescription() == null || entity.getCourseId() == null ||
-//                    entity.getInstructorId() == null || entity.getStatus() == null) {
-//                throw new Exception("All fields must be completed before saving.");
-//            } //take this to bo layer
-            session.persist(entity);
+
+            // Set managed entities
+            lesson.setInstructor(managedInstructor);
+            lesson.setRegistration(managedRegistration);
+            lesson.setCourse(managedCourse);
+
+            transaction = session.beginTransaction();
+            session.persist(lesson);
             transaction.commit();
             return true;
+
         } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
-            transaction.rollback();
             return false;
         }
     }
+
 
     @Override
     public boolean update(Lesson entity) {

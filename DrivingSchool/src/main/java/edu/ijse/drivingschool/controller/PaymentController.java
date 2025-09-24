@@ -104,7 +104,7 @@ public class PaymentController implements Initializable {
         }
 
         try {
-            boolean isDeleted = paymentBO.delete(payment.getRegistrationId());
+            boolean isDeleted = paymentBO.delete(payment.getPaymentId());
 
             if (isDeleted) {
                 resetPage();
@@ -200,7 +200,7 @@ public class PaymentController implements Initializable {
         colPmethod.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("paymentAmount"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("paymentStatus"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         try {
             loadTableData();

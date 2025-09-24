@@ -27,8 +27,8 @@ public class LessonDTO {
         this.lessonId=lessonId;
         this.lessonName=lessonName;
         this.lessonDescription=lessonDescription;
-        this.registrationId=registration.getRegistrationId();
-        this.instructorId=instructor.getInstructorId();
+        this.registrationId = (registration != null) ? registration.getRegistrationId() : null;
+        this.instructorId = (instructor != null) ? instructor.getInstructorId() : null;
         this.courseId=course.getCourseId();
         this.lessonDate=lessonDate;
         this.lessonTime=lessonTime;

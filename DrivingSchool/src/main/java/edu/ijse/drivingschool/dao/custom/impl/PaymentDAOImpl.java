@@ -52,7 +52,7 @@ public class PaymentDAOImpl implements PaymentDAO {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.persist(entity);
+            session.merge(entity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -80,6 +80,8 @@ public class PaymentDAOImpl implements PaymentDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
+        } finally {
+            session.close();
         }
     }
 

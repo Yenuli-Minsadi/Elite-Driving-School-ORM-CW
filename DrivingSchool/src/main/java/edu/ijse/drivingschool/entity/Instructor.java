@@ -18,8 +18,9 @@ public class Instructor {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
-    private List<Lesson> lesson;
+    // Use fetch = LAZY to avoid unnecessary loading and add cascade for better management
+    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Lesson> lesson; // Changed from 'lesson' to 'lessons' for better naming
 
     private String specialization;
     private String phone;

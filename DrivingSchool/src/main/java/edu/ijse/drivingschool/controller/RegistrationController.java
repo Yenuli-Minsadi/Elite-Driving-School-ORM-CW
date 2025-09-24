@@ -241,7 +241,7 @@ public class RegistrationController implements Initializable {
         RegistrationTM selectedRequest = tblReg.getSelectionModel().getSelectedItem();
 
         if (selectedRequest != null) {
-            lblRegId.setText(selectedRequest.getStudentId());
+            lblRegId.setText(selectedRequest.getRegistrationId());
             txtSudentId.setText(selectedRequest.getStudentId());
             txtCourseId.setText(selectedRequest.getCourseId());
             dateRegDate.setValue(selectedRequest.getRegistrationDate());

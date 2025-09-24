@@ -42,7 +42,7 @@ public class PaymentBOImpl implements PaymentBO {
     @Override
     public boolean update(PaymentDTO paymentDTO) throws Exception {
         Registration registration = registrationDAO.getById(paymentDTO.getRegistrationId());
-        return paymentDAO.save(new Payment(
+        return paymentDAO.update(new Payment(
                 paymentDTO.getPaymentId(),
                 registration,
                 paymentDTO.getPaymentType(),

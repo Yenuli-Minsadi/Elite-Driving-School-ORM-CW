@@ -23,12 +23,12 @@ public class Lesson {
     @JoinColumn(name="registration_id", nullable = false)
     private Registration registration;
 
-    @ManyToOne
-    @JoinColumn(name="instructor_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_id", nullable = false)
     private Instructor instructor;
 
     @ManyToOne
-    @JoinColumn(name="course_id")
+    @JoinColumn(name="course_id", nullable = false)
     private Course course;
 
     private LocalDate lessonDate;
