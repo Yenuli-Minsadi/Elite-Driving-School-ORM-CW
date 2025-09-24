@@ -218,6 +218,7 @@ public class LessonController implements Initializable {
                     lessonDTO.getLessonId(),
                     lessonDTO.getLessonName(),
                     lessonDTO.getLessonDescription(),
+                    lessonDTO.getRegistrationId(),
                     lessonDTO.getInstructorId(),
                     lessonDTO.getCourseId(),
                     lessonDTO.getLessonDate(),
@@ -283,6 +284,7 @@ public class LessonController implements Initializable {
             txtLname.setText("");
             txtDesc.setText("");
             txtIid.setText("");
+            txtRid.setText("");
             txtCid.setText("");
             dateLdate.setValue(null);
             txtLtime.setText("");
@@ -301,6 +303,7 @@ public class LessonController implements Initializable {
             txtLname.setText(selectedRequest.getLessonName());
             txtDesc.setText(selectedRequest.getLessonDescription());
             txtIid.setText(selectedRequest.getInstructorId());
+            txtRid.setText(selectedRequest.getRegistrationId());
             txtCid.setText(selectedRequest.getCourseId());
             dateLdate.setValue(selectedRequest.getLessonDate());
             txtLtime.setText(selectedRequest.getLessonTime());
