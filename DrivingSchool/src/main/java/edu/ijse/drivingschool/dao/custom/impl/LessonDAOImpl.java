@@ -6,6 +6,7 @@ import edu.ijse.drivingschool.entity.Course;
 import edu.ijse.drivingschool.entity.Instructor;
 import edu.ijse.drivingschool.entity.Lesson;
 import edu.ijse.drivingschool.entity.Registration;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -115,6 +116,15 @@ public class LessonDAOImpl implements LessonDAO {
             return session.createQuery("FROM Lesson", Lesson.class).list();
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Lesson getById(String lessonId) throws Exception {
+        try (Session session = FactoryConfiguration.getInstance().getSession()){
+            return session.get(Lesson.class, lessonId);
+        } catch (HibernateException e) {
+            throw new RuntimeException("Failed to fetch student with id" + lessonId, e);
         }
     }
 }

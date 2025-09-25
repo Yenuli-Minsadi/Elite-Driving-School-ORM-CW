@@ -5,6 +5,7 @@ import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
+import edu.ijse.drivingschool.exception.DuplicateEntryException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,11 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public boolean save(UserDTO userDTO) {
+    public boolean save(UserDTO userDTO) throws Exception {
+        if (userDAO.getById(userDTO.getUserId()) != null) {
+            throw new DuplicateEntryException("User with ID " + userDTO.getUserId() + " already exists.");
+        }
+
         return userDAO.save(new User(userDTO.getUserId(), userDTO.getFirstName(),
                 userDTO.getLastName(), userDTO.getUsername(), userDTO.getEmail(),
                 userDTO.getPhone(), userDTO.getPassword(), userDTO.getRole()));
@@ -52,5 +57,10 @@ public class UserBOImpl implements UserBO {
                     user.getEmail(), user.getPhone(), user.getPassword(), user.getRole()));
         }
         return userDTO;
+    }
+
+    @Override
+    public User getById(String userId) throws Exception {
+        return userDAO.getById(userId);
     }
 }

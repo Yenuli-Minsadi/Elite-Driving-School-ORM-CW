@@ -9,6 +9,7 @@ import edu.ijse.drivingschool.dto.RegistrationDTO;
 import edu.ijse.drivingschool.entity.Course;
 import edu.ijse.drivingschool.entity.Payment;
 import edu.ijse.drivingschool.entity.Registration;
+import edu.ijse.drivingschool.exception.DuplicateEntryException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,10 @@ public class PaymentBOImpl implements PaymentBO {
 
     @Override
     public boolean save(PaymentDTO paymentDTO) throws Exception{
+
+        if (paymentDAO.getById(paymentDTO.getPaymentId()) != null) {
+            throw new DuplicateEntryException("Payment with ID " + paymentDTO.getPaymentId() + " already exists.");
+        }
 
         Registration registration = registrationDAO.getById(paymentDTO.getRegistrationId());
 
@@ -68,5 +73,10 @@ public class PaymentBOImpl implements PaymentBO {
                     payment.getPaymentDate(), payment.getStatus()));
         }
         return paymentDTO;
+    }
+
+    @Override
+    public Payment getById(String paymentId) throws Exception {
+        return paymentDAO.getById(paymentId);
     }
 }

@@ -4,6 +4,8 @@ import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.PaymentDAO;
 import edu.ijse.drivingschool.entity.Lesson;
 import edu.ijse.drivingschool.entity.Payment;
+import edu.ijse.drivingschool.entity.Registration;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -92,6 +94,15 @@ public class PaymentDAOImpl implements PaymentDAO {
             return session.createQuery("FROM Payment", Payment.class).list();
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Payment getById(String paymentId) throws Exception {
+        try (Session session = FactoryConfiguration.getInstance().getSession()){
+            return session.get(Payment.class, paymentId);
+        } catch (HibernateException e) {
+            throw new RuntimeException("Failed to fetch student with id" + paymentId, e);
         }
     }
 }

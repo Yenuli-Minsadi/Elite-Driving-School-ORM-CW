@@ -7,6 +7,7 @@ import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.Student;
 import edu.ijse.drivingschool.entity.User;
+import edu.ijse.drivingschool.exception.DuplicateEntryException;
 import edu.ijse.drivingschool.exception.MissingFields;
 
 import javax.print.DocFlavor;
@@ -23,9 +24,9 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public boolean save(StudentDTO studentDTO) {
-        if (studentDTO==null) {
-            throw new MissingFields("Student ID is required");
+    public boolean save(StudentDTO studentDTO) throws Exception {
+        if (studentDAO.getById(studentDTO.getStudentId()) != null) {
+            throw new DuplicateEntryException("Student with ID " + studentDTO.getStudentId() + " already exists.");
         }
         return studentDAO.save(new Student(studentDTO.getStudentId(),
                 studentDTO.getFirstName(), studentDTO.getLastName(), studentDTO.getEmail(),

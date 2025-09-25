@@ -9,7 +9,7 @@ import java.util.List;
 public interface InstructorBO extends SuperBO {
 
     public String getNextId() throws Exception;
-    public boolean save(InstructorDTO instructorDTO);
+    public boolean save(InstructorDTO instructorDTO) throws Exception;
     public boolean update(InstructorDTO instructorDTO);
     public boolean delete(String id);
     public List<InstructorDTO> getAll();

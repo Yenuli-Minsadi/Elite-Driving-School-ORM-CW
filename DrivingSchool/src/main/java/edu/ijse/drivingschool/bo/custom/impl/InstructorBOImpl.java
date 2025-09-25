@@ -7,6 +7,7 @@ import edu.ijse.drivingschool.dto.InstructorDTO;
 import edu.ijse.drivingschool.dto.LessonDTO;
 import edu.ijse.drivingschool.entity.Instructor;
 import edu.ijse.drivingschool.entity.Lesson;
+import edu.ijse.drivingschool.exception.DuplicateEntryException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,12 @@ public class InstructorBOImpl implements InstructorBO {
     }
 
     @Override
-    public boolean save(InstructorDTO instructorDTO) {
+    public boolean save(InstructorDTO instructorDTO) throws Exception {
+
+        if (instructorDAO.getById(instructorDTO.getInstructorId()) != null) {
+            throw new DuplicateEntryException("Instructor with ID " + instructorDTO.getInstructorId() + " already exists.");
+        }
+
         return instructorDAO.save(new Instructor(
                 instructorDTO.getInstructorId(),
                 instructorDTO.getFirstName(),

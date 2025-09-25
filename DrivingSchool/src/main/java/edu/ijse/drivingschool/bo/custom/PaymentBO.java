@@ -2,6 +2,8 @@ package edu.ijse.drivingschool.bo.custom;
 
 import edu.ijse.drivingschool.bo.SuperBO;
 import edu.ijse.drivingschool.dto.PaymentDTO;
+import edu.ijse.drivingschool.entity.Payment;
+import edu.ijse.drivingschool.entity.Student;
 
 import java.util.List;
 
@@ -12,5 +14,6 @@ public interface PaymentBO extends SuperBO {
     public boolean update(PaymentDTO paymentDTO)throws Exception;
     public boolean delete(String id);
     public List<PaymentDTO> getAll();
+    Payment getById(String paymentId) throws Exception;
 
 }

@@ -9,6 +9,7 @@ import edu.ijse.drivingschool.dao.custom.RegistrationDAO;
 import edu.ijse.drivingschool.dto.LessonDTO;
 import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.entity.*;
+import edu.ijse.drivingschool.exception.DuplicateEntryException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,10 @@ public class LessonBOImpl implements LessonBO {
 
     @Override
     public boolean save(LessonDTO lessonDTO) throws Exception{
+
+        if (lessonDAO.getById(lessonDTO.getLessonId()) != null) {
+            throw new DuplicateEntryException("Lesson with ID " + lessonDTO.getLessonId() + " already exists.");
+        }
 
         Registration registration = registrationDAO.getById(lessonDTO.getRegistrationId());
         Instructor instructor = instructorDAO.getById(lessonDTO.getInstructorId());
@@ -79,5 +84,10 @@ public class LessonBOImpl implements LessonBO {
                     lesson.getInstructor(), lesson.getCourse(), lesson.getLessonDate(), lesson.getLessonTime(), lesson.getStatus()));
         }
         return lessonDTO;
+    }
+
+    @Override
+    public Lesson getById(String lessonId) throws Exception {
+        return lessonDAO.getById(lessonId);
     }
 }

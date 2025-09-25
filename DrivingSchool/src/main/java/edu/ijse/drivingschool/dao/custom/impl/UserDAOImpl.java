@@ -2,8 +2,10 @@ package edu.ijse.drivingschool.dao.custom.impl;
 
 import edu.ijse.drivingschool.config.FactoryConfiguration;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
+import edu.ijse.drivingschool.entity.Registration;
 import edu.ijse.drivingschool.entity.Student;
 import edu.ijse.drivingschool.entity.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -124,6 +126,15 @@ public class UserDAOImpl implements UserDAO {
             return session.createQuery("FROM User", User.class).list();
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public User getById(String userId) throws Exception {
+        try (Session session = FactoryConfiguration.getInstance().getSession()){
+            return session.get(User.class, userId);
+        } catch (HibernateException e) {
+            throw new RuntimeException("Failed to fetch student with id" + userId, e);
         }
     }
 }

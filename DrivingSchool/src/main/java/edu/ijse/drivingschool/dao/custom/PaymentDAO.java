@@ -11,4 +11,5 @@ public interface PaymentDAO extends CrudDAO<Payment> {
     public boolean update(Payment entity);
     public boolean delete(String id);
     public List<Payment> getAll();
+    Payment getById(String paymentId) throws Exception;
 }

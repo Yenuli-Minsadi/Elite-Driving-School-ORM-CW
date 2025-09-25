@@ -10,7 +10,7 @@ import java.util.List;
 public interface CourseBO extends SuperBO {
 
     public String getNextId() throws Exception;
-    public boolean save(CourseDTO courseDTO);
+    public boolean save(CourseDTO courseDTO) throws Exception;
     public boolean update(CourseDTO courseDTO);
     public boolean delete(String id);
     public List<CourseDTO> getAll();

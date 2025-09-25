@@ -106,7 +106,6 @@ public class CourseDAOImpl implements CourseDAO {
 
     @Override
     public Course getById(String courseId) throws Exception {
-
         try (Session session = FactoryConfiguration.getInstance().getSession()){
             return session.get(Course.class, courseId);
         } catch (HibernateException e) {

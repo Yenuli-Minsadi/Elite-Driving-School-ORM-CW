@@ -11,4 +11,5 @@ public interface LessonDAO extends CrudDAO<Lesson> {
     public boolean update(Lesson entity);
     public boolean delete(String id);
     public List<Lesson> getAll();
+    Lesson getById(String lessonId) throws Exception;
 }
