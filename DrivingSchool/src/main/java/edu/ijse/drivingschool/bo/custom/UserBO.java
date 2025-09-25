@@ -16,5 +16,6 @@ public interface UserBO extends SuperBO {
     public User verifyUsername(String username);
     public List<UserDTO> getAll();
     User getById(String userId) throws Exception;
+    public User verifyUser(String username,String password);
 
 }

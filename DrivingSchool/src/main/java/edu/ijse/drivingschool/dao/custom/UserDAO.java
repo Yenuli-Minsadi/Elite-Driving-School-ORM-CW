@@ -14,4 +14,5 @@ public interface UserDAO extends CrudDAO<User> {
     public User verifyUsername(String username);
     public List<User> getAll();
     User getById(String userId) throws Exception;
+
 }

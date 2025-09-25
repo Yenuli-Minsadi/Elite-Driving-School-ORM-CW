@@ -6,6 +6,8 @@ import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.exception.InvalidCredentials;
+import edu.ijse.drivingschool.util.PasswordUtil;
 import edu.ijse.drivingschool.util.StudentFieldsValidator;
 import edu.ijse.drivingschool.util.UserFieldsValidator;
 
@@ -67,5 +69,20 @@ public class UserBOImpl implements UserBO {
     @Override
     public User getById(String userId) throws Exception {
         return userDAO.getById(userId);
+    }
+
+    @Override
+    public User verifyUser(String username, String password) {
+        User logUser = userDAO.verifyUsername(username);
+
+        if (logUser == null) {
+            throw new InvalidCredentials("User cannot be found");
+        }
+
+        if (!PasswordUtil.matches(password,logUser.getPassword())) {
+            throw new InvalidCredentials("Invalid password");
+        }
+
+        return logUser;
     }
 }

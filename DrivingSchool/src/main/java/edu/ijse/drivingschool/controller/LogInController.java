@@ -7,6 +7,7 @@ import edu.ijse.drivingschool.bo.custom.impl.UserBOImpl;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dto.tm.UserTM;
 import edu.ijse.drivingschool.entity.User;
+import edu.ijse.drivingschool.exception.InvalidCredentials;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -77,20 +78,15 @@ public class LogInController {
             return;
         }
 
-        User user = userBO.verifyUsername(username);
-
-        if (user == null) {
-            showAlert(Alert.AlertType.ERROR, "Authentication Failed", "User not found");
-            return;
+        try {
+            User user = userBO.verifyUser(username,password);
+            showAlert(Alert.AlertType.ERROR, "Login Success", "Welcome"+user.getUsername());
+            loadDashboard(user);
+        } catch (InvalidCredentials e) {
+            showAlert(Alert.AlertType.ERROR, "Authentication failed", e.getMessage());
         }
 
-        if (!PasswordUtil.matches(password, user.getPassword())) {
-            showAlert(Alert.AlertType.ERROR, "Authentication Failed", "Wrong password");
-            return;
-        }
 
-        showAlert(Alert.AlertType.ERROR, "Login Success", "Welcome"+user.getUsername());
-        loadDashboard(user);
     }
 
     @FXML
