@@ -8,6 +8,7 @@ import edu.ijse.drivingschool.dto.PaymentDTO;
 import edu.ijse.drivingschool.dto.RegistrationDTO;
 import edu.ijse.drivingschool.dto.tm.PaymentTM;
 import edu.ijse.drivingschool.dto.tm.RegistrationTM;
+import edu.ijse.drivingschool.exception.PaymentFailed;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -146,6 +147,10 @@ public class PaymentController implements Initializable {
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to save payment. Try again.");
             }
+        } catch (PaymentFailed e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Error", "Payment save failed: " + e.getMessage());
+
         } catch (Exception e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "An unexpected error occurred: " + e.getMessage());

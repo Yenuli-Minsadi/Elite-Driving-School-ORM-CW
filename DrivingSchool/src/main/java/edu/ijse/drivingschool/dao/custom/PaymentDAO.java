@@ -2,6 +2,7 @@ package edu.ijse.drivingschool.dao.custom;
 
 import edu.ijse.drivingschool.dao.CrudDAO;
 import edu.ijse.drivingschool.entity.Payment;
+import edu.ijse.drivingschool.exception.PaymentFailed;
 
 import java.util.List;
 

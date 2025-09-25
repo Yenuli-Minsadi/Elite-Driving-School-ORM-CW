@@ -7,6 +7,7 @@ import edu.ijse.drivingschool.bo.custom.impl.UserBOImpl;
 import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dto.tm.UserTM;
 import edu.ijse.drivingschool.entity.User;
+import edu.ijse.drivingschool.exception.AccountLocked;
 import edu.ijse.drivingschool.exception.InvalidCredentials;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,6 +85,11 @@ public class LogInController {
             loadDashboard(user);
         } catch (InvalidCredentials e) {
             showAlert(Alert.AlertType.ERROR, "Authentication failed", e.getMessage());
+        } catch (AccountLocked
+                e) {
+            showAlert(Alert.AlertType.ERROR, "Account locked after 3 failed attempts, please contact admin.", e.getMessage());
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Something went wrong, an unexpected error occurred", e.getMessage());
         }
 
 

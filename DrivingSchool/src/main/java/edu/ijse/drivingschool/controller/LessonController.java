@@ -9,6 +9,7 @@ import edu.ijse.drivingschool.dto.PaymentDTO;
 import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.dto.tm.LessonTM;
 import edu.ijse.drivingschool.dto.tm.StudentTM;
+import edu.ijse.drivingschool.exception.SchedulingConflicts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -163,6 +164,9 @@ public class LessonController implements Initializable {
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to save lesson. Try again.");
             }
+        } catch (SchedulingConflicts e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Error", "Failed to schedule lesson: " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "An unexpected error occurred: " + e.getMessage());

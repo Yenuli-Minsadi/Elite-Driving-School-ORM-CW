@@ -6,6 +6,7 @@ import edu.ijse.drivingschool.entity.Course;
 import edu.ijse.drivingschool.entity.Instructor;
 import edu.ijse.drivingschool.entity.Lesson;
 import edu.ijse.drivingschool.entity.Registration;
+import edu.ijse.drivingschool.exception.SchedulingConflicts;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -46,7 +47,7 @@ public class LessonDAOImpl implements LessonDAO {
             Course managedCourse = session.get(Course.class, lesson.getCourse().getCourseId());
 
             if (managedInstructor == null || managedRegistration == null || managedCourse == null) {
-                throw new RuntimeException("Instructor, Registration, or Course not found in DB!");
+                throw new SchedulingConflicts("Instructor, Registration, or Course not found in DB!");
             }
 
             // Set managed entities
@@ -59,6 +60,10 @@ public class LessonDAOImpl implements LessonDAO {
             transaction.commit();
             return true;
 
+        } catch (SchedulingConflicts e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+            return false;
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();

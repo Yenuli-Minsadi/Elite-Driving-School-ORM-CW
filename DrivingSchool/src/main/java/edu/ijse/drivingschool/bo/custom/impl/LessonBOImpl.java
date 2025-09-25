@@ -6,10 +6,12 @@ import edu.ijse.drivingschool.dao.custom.CourseDAO;
 import edu.ijse.drivingschool.dao.custom.InstructorDAO;
 import edu.ijse.drivingschool.dao.custom.LessonDAO;
 import edu.ijse.drivingschool.dao.custom.RegistrationDAO;
+import edu.ijse.drivingschool.dto.InstructorDTO;
 import edu.ijse.drivingschool.dto.LessonDTO;
 import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.entity.*;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.exception.SchedulingConflicts;
 import edu.ijse.drivingschool.util.LessonFieldsValidator;
 import edu.ijse.drivingschool.util.StudentFieldsValidator;
 
@@ -29,7 +31,7 @@ public class LessonBOImpl implements LessonBO {
     }
 
     @Override
-    public boolean save(LessonDTO lessonDTO) throws Exception{
+    public boolean save(LessonDTO lessonDTO) throws SchedulingConflicts, Exception {
 
         LessonFieldsValidator.fieldsValidate(lessonDTO);
 
@@ -40,6 +42,10 @@ public class LessonBOImpl implements LessonBO {
         Registration registration = registrationDAO.getById(lessonDTO.getRegistrationId());
         Instructor instructor = instructorDAO.getById(lessonDTO.getInstructorId());
         Course course = courseDAO.getById(lessonDTO.getCourseId());
+
+        if (instructor.getAvailability().equals("Unavailable")) {
+            throw new SchedulingConflicts("Instructor isn't available!");
+        }
 
         return lessonDAO.save(new Lesson(
                 lessonDTO.getLessonId(),

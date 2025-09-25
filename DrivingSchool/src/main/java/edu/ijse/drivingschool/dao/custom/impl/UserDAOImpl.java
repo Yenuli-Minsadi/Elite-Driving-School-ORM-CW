@@ -137,5 +137,5 @@ public class UserDAOImpl implements UserDAO {
             throw new RuntimeException("Failed to fetch student with id" + userId, e);
         }
     }
-    
+
 }

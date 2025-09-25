@@ -5,11 +5,13 @@ import edu.ijse.drivingschool.dao.DAOFactory;
 import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
+import edu.ijse.drivingschool.exception.AccountLocked;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
 import edu.ijse.drivingschool.exception.InvalidCredentials;
 import edu.ijse.drivingschool.util.PasswordUtil;
 import edu.ijse.drivingschool.util.StudentFieldsValidator;
 import edu.ijse.drivingschool.util.UserFieldsValidator;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,8 @@ public class UserBOImpl implements UserBO {
         return userDAO.getById(userId);
     }
 
+    private int loggingAttempts;
+
     @Override
     public User verifyUser(String username, String password) {
         User logUser = userDAO.verifyUsername(username);
@@ -80,9 +84,13 @@ public class UserBOImpl implements UserBO {
         }
 
         if (!PasswordUtil.matches(password,logUser.getPassword())) {
+            loggingAttempts++;
+            if (loggingAttempts >= 3) {
+                throw new AccountLocked("3 failed attempts. Your account has been locked, please contact the admin.");
+            }
             throw new InvalidCredentials("Invalid password");
         }
-
+        loggingAttempts=0;
         return logUser;
     }
 }

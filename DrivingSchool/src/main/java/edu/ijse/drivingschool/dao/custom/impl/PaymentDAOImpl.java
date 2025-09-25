@@ -5,6 +5,7 @@ import edu.ijse.drivingschool.dao.custom.PaymentDAO;
 import edu.ijse.drivingschool.entity.Lesson;
 import edu.ijse.drivingschool.entity.Payment;
 import edu.ijse.drivingschool.entity.Registration;
+import edu.ijse.drivingschool.exception.PaymentFailed;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -38,12 +39,15 @@ public class PaymentDAOImpl implements PaymentDAO {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
+            if (entity.getPaymentAmount().trim().equals("0")) {
+                throw new PaymentFailed("Payment cannot be zero");
+            }
             session.persist(entity);
             transaction.commit();
             return true;
         } catch (Exception e) {
             transaction.rollback();
-            throw e;
+            throw new PaymentFailed("Failed to save payment");
         } finally {
             session.close();
         }
