@@ -22,6 +22,9 @@ public class ReceptionistDashController {
     private Pane ancMainDash;
 
     @FXML
+    private Button btnInsights;
+
+    @FXML
     private Button btnLesson;
 
     @FXML
@@ -98,4 +101,15 @@ public class ReceptionistDashController {
         });
     }
 
+
+    public void btnInsightsOnAction(ActionEvent actionEvent) throws IOException {
+
+        ancMainDash.getChildren().clear();
+        Pane pane = FXMLLoader.load(getClass().getResource("/view/MainDash.fxml"));
+
+        pane.prefWidthProperty().bind(ancMainDash.widthProperty());
+        pane.prefHeightProperty().bind(ancMainDash.heightProperty());
+
+        ancMainDash.getChildren().add(pane);
+    }
 }

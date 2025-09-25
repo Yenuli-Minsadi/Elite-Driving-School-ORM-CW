@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="ancMainDash" prefHeight="647.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.MainDashController">
+   <children>
+      <Pane layoutX="144.0" layoutY="32.0" prefHeight="566.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+         <children>
+            <Pane layoutX="256.0" layoutY="183.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #32012F; -fx-background-radius: 40;">
+               <children>
+                  <Label fx:id="lblEnrollAllCourses" layoutX="57.0" layoutY="74.0" prefHeight="53.0" prefWidth="85.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <Text fill="WHITE" layoutX="15.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students Enrolled in All Courses" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

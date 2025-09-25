@@ -148,6 +148,18 @@ public class AdminDashController implements Initializable {
         ancMainDash.getChildren().add(pane);
     }
 
+
+    @FXML
+    void btnHomeOnAction(ActionEvent event) throws IOException {
+        ancMainDash.getChildren().clear();
+        Pane pane = FXMLLoader.load(getClass().getResource("/view/MainDash.fxml"));
+
+        pane.prefWidthProperty().bind(ancMainDash.widthProperty());
+        pane.prefHeightProperty().bind(ancMainDash.heightProperty());
+
+        ancMainDash.getChildren().add(pane);
+    }
+
     @FXML
     void onLogoutClick(MouseEvent event) {
         // Create a confirmation alert
