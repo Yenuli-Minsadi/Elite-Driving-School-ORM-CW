@@ -1,6 +1,7 @@
 package edu.ijse.drivingschool.dao;
 
 import edu.ijse.drivingschool.dao.custom.impl.*;
+import org.hibernate.query.Query;
 
 public class DAOFactory {
 
@@ -22,7 +23,8 @@ public class DAOFactory {
         PAYMENT,
         REGISTRATION,
         STUDENT,
-        USER
+        USER,
+        QUERY
     }
 
     public SuperDAO getDAO(DAOTypes daoType) {
@@ -41,6 +43,8 @@ public class DAOFactory {
                 return new StudentDAOImpl();
             case USER:
                 return new UserDAOImpl();
+            case QUERY:
+                return new QueryDAOImpl();
             default:
                 return null;
         }

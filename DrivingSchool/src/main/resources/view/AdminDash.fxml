@@ -37,6 +37,14 @@
                      <effect>
                         <DropShadow height="10.0" radius="4.5" width="10.0" />
                      </effect>
+                     <children>
+                        <Pane layoutX="256.0" layoutY="183.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="lblEnrollAllCourses" layoutX="86.0" layoutY="124.0" text="Label" />
+                              <Text layoutX="15.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students Enrolled in All Courses" />
+                           </children>
+                        </Pane>
+                     </children>
                   </Pane>
                </children>
             </Pane>

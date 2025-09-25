@@ -24,7 +24,8 @@ public class BOFactory {
         PAYMENT,
         REGISTRATION,
         STUDENT,
-        USER
+        USER,
+        QUERY
     }
 
     public SuperBO getBo(BOFactory.BOTypes boType) {
@@ -43,6 +44,8 @@ public class BOFactory {
                 return new StudentBOImpl();
             case USER:
                 return new UserBOImpl();
+            case QUERY:
+                return new QueryBOImpl();
             default:
                 return null;
         }

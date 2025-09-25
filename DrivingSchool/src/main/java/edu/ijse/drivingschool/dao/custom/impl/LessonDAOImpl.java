@@ -71,7 +71,6 @@ public class LessonDAOImpl implements LessonDAO {
         }
     }
 
-
     @Override
     public boolean update(Lesson entity) {
         Session session = factoryConfiguration.getSession();

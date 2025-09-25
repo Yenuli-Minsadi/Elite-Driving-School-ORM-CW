@@ -2,6 +2,7 @@ package edu.ijse.drivingschool.bo.custom.impl;
 
 import edu.ijse.drivingschool.bo.custom.StudentBO;
 import edu.ijse.drivingschool.dao.DAOFactory;
+import edu.ijse.drivingschool.dao.custom.QueryDAO;
 import edu.ijse.drivingschool.dao.custom.StudentDAO;
 import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.dto.UserDTO;
@@ -63,4 +64,5 @@ public class StudentBOImpl implements StudentBO {
     public Student getById(String studentId) throws Exception {
         return studentDAO.getById(studentId);
     }
+
 }

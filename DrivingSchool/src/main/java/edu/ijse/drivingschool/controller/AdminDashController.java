@@ -1,8 +1,13 @@
 package edu.ijse.drivingschool.controller;
 
+import edu.ijse.drivingschool.bo.BOFactory;
+import edu.ijse.drivingschool.bo.custom.QueryBO;
+import edu.ijse.drivingschool.dto.StudentDTO;
+import edu.ijse.drivingschool.entity.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,8 +20,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AdminDashController {
+public class AdminDashController implements Initializable {
+
+    @FXML
+    private Label lblEnrollAllCourses;
 
     @FXML
     private Button btnCoordinatoor;
@@ -46,7 +57,7 @@ public class AdminDashController {
     @FXML
     private Label lblLogout;
 
-
+    QueryBO queryBO = (QueryBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.QUERY);
 
     @FXML
     private Pane ancMainDash;
@@ -169,4 +180,17 @@ public class AdminDashController {
         });
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loadStudentsAllCourseEnroll();
+    }
+
+    private void  loadStudentsAllCourseEnroll() {
+        try {
+            int count = queryBO.getStudentsRegisteredForAllCourses();
+            lblEnrollAllCourses.setText(String.valueOf(count));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
