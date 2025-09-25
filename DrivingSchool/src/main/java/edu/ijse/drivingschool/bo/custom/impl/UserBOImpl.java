@@ -6,6 +6,8 @@ import edu.ijse.drivingschool.dao.custom.UserDAO;
 import edu.ijse.drivingschool.dto.UserDTO;
 import edu.ijse.drivingschool.entity.User;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.util.StudentFieldsValidator;
+import edu.ijse.drivingschool.util.UserFieldsValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,9 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public boolean save(UserDTO userDTO) throws Exception {
+
+        UserFieldsValidator.fieldsValidate(userDTO);
+
         if (userDAO.getById(userDTO.getUserId()) != null) {
             throw new DuplicateEntryException("User with ID " + userDTO.getUserId() + " already exists.");
         }

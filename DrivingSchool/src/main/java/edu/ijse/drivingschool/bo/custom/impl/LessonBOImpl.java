@@ -10,6 +10,8 @@ import edu.ijse.drivingschool.dto.LessonDTO;
 import edu.ijse.drivingschool.dto.StudentDTO;
 import edu.ijse.drivingschool.entity.*;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.util.LessonFieldsValidator;
+import edu.ijse.drivingschool.util.StudentFieldsValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,8 @@ public class LessonBOImpl implements LessonBO {
 
     @Override
     public boolean save(LessonDTO lessonDTO) throws Exception{
+
+        LessonFieldsValidator.fieldsValidate(lessonDTO);
 
         if (lessonDAO.getById(lessonDTO.getLessonId()) != null) {
             throw new DuplicateEntryException("Lesson with ID " + lessonDTO.getLessonId() + " already exists.");

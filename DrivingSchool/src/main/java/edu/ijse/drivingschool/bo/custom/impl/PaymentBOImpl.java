@@ -10,6 +10,8 @@ import edu.ijse.drivingschool.entity.Course;
 import edu.ijse.drivingschool.entity.Payment;
 import edu.ijse.drivingschool.entity.Registration;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.util.PaymentFieldsValidator;
+import edu.ijse.drivingschool.util.StudentFieldsValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,8 @@ public class PaymentBOImpl implements PaymentBO {
 
     @Override
     public boolean save(PaymentDTO paymentDTO) throws Exception{
+
+        PaymentFieldsValidator.fieldsValidate(paymentDTO);
 
         if (paymentDAO.getById(paymentDTO.getPaymentId()) != null) {
             throw new DuplicateEntryException("Payment with ID " + paymentDTO.getPaymentId() + " already exists.");

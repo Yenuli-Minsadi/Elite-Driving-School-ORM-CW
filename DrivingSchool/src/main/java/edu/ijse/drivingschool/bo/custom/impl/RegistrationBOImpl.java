@@ -12,6 +12,8 @@ import edu.ijse.drivingschool.entity.Registration;
 import edu.ijse.drivingschool.entity.Student;
 import edu.ijse.drivingschool.entity.User;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.util.RegisterFieldsValidator;
+import edu.ijse.drivingschool.util.StudentFieldsValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,8 @@ public class RegistrationBOImpl implements RegistrationBO {
 
     @Override
     public boolean save(RegistrationDTO registrationDTO) throws Exception{
+
+        RegisterFieldsValidator.fieldsValidate(registrationDTO);
 
         if (registrationDAO.getById(registrationDTO.getRegistrationId()) != null) {
             throw new DuplicateEntryException("Registration with ID " + registrationDTO.getRegistrationId() + " already exists.");

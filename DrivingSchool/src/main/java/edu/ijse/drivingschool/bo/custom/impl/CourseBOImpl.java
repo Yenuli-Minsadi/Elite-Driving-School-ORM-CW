@@ -9,6 +9,8 @@ import edu.ijse.drivingschool.entity.Course;
 import edu.ijse.drivingschool.entity.Instructor;
 import edu.ijse.drivingschool.entity.Student;
 import edu.ijse.drivingschool.exception.DuplicateEntryException;
+import edu.ijse.drivingschool.util.CourseFieldsValidator;
+import edu.ijse.drivingschool.util.StudentFieldsValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public boolean save(CourseDTO courseDTO) throws Exception {
+
+        CourseFieldsValidator.fieldsValidate(courseDTO);
 
         if (courseDAO.getById(courseDTO.getCourseId()) != null) {
             throw new DuplicateEntryException("Course with ID " + courseDTO.getCourseId() + " already exists.");
