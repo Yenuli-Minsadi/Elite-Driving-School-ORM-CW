@@ -16,7 +16,7 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView fx:id="tblCourse" layoutX="13.0" layoutY="333.0" onMouseClicked="#onClickTable" prefHeight="200.0" prefWidth="886.0" style="-fx-background-radius: 10;">
+            <TableView fx:id="tblCourse" layoutX="13.0" layoutY="319.0" onMouseClicked="#onClickTable" prefHeight="223.0" prefWidth="886.0" style="-fx-background-radius: 10;">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="138.0" text="CID" />
                 <TableColumn fx:id="colCname" prefWidth="240.0" text="Course Name" />
@@ -26,59 +26,59 @@
                   <TableColumn fx:id="colDesc" prefWidth="107.0" text="Description" />
               </columns>
             </TableView>
-            <Label layoutX="65.0" layoutY="85.0" text="Course Name">
+            <Label layoutX="65.0" layoutY="72.0" text="Course Name">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="lblCourseId" layoutX="165.0" layoutY="47.0" text="C001">
+            <Label fx:id="lblCourseId" layoutX="165.0" layoutY="34.0" text="C001">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label layoutX="74.0" layoutY="255.0" text=" Description">
+            <Label layoutX="74.0" layoutY="242.0" text=" Description">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <TextField fx:id="txtCdescription" layoutX="165.0" layoutY="250.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
-            <TextField fx:id="txtCName" layoutX="165.0" layoutY="81.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
-            <TextField fx:id="txtCfee" layoutX="165.0" layoutY="168.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
-            <Label layoutX="80.0" layoutY="172.0" text="Course Fee">
+            <TextField fx:id="txtCdescription" layoutX="165.0" layoutY="237.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtCName" layoutX="165.0" layoutY="68.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtCfee" layoutX="165.0" layoutY="155.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="80.0" layoutY="159.0" text="Course Fee">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="72.0" layoutY="129.0" text="Course Type">
+            <Label layoutX="72.0" layoutY="116.0" text="Course Type">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCtype" layoutX="165.0" layoutY="125.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
-            <Label layoutX="85.0" layoutY="47.0" text="Course ID">
+            <TextField fx:id="txtCtype" layoutX="165.0" layoutY="112.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="85.0" layoutY="34.0" text="Course ID">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="213.0" text="Duration">
+            <Label layoutX="90.0" layoutY="200.0" text="Duration">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCduration" layoutX="165.0" layoutY="209.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
-            <Button fx:id="btnSave" layoutX="705.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 5; -fx-background-color: #2B2A4C;" text="Save" textFill="WHITE">
+            <TextField fx:id="txtCduration" layoutX="165.0" layoutY="196.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <Button fx:id="btnSave" layoutX="705.0" layoutY="67.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 5; -fx-background-color: #2B2A4C;" text="Save" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnUpdate" layoutX="705.0" layoutY="133.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 5; -fx-background-color: #116D6E;" text="Update" textFill="WHITE">
+            <Button fx:id="btnUpdate" layoutX="705.0" layoutY="120.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 5; -fx-background-color: #116D6E;" text="Update" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnDelete" layoutX="705.0" layoutY="185.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 5; -fx-background-color: #950101;" text="Delete" textFill="WHITE">
+            <Button fx:id="btnDelete" layoutX="705.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 5; -fx-background-color: #950101;" text="Delete" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnRefresh" layoutX="828.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="20.0" prefWidth="70.0" style="-fx-background-radius: 5; -fx-background-color: #C4D9FF;" text="Refresh" />
+            <Button fx:id="btnRefresh" layoutX="828.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="20.0" prefWidth="70.0" style="-fx-background-radius: 5; -fx-background-color: #C4D9FF;" text="Refresh" />
          </children>
       </Pane>
    </children>

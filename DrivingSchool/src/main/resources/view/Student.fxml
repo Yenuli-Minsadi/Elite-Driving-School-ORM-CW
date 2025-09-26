@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="ancStudentDash" prefHeight="647.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.StudentController">
    <children>
@@ -16,7 +17,7 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView fx:id="tblStudent" layoutX="14.0" layoutY="308.0" onMouseClicked="#onClickTable" prefHeight="232.0" prefWidth="886.0">
+            <TableView fx:id="tblStudent" layoutX="14.0" layoutY="308.0" onMouseClicked="#onClickTable" prefHeight="232.0" prefWidth="886.0" style="-fx-background-radius: 10;">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="75.0" text="SID" />
                 <TableColumn fx:id="colFn" prefWidth="104.0" text="First Name" />
@@ -27,25 +28,61 @@
                   <TableColumn fx:id="colDOB" prefWidth="142.0" text="DOB" />
               </columns>
             </TableView>
-            <Label layoutX="56.0" layoutY="74.0" text="Student ID" />
-            <Label layoutX="325.0" layoutY="74.0" text="First Name" />
-            <Label layoutX="602.0" layoutY="74.0" text="Last Name" />
-            <Label layoutX="56.0" layoutY="164.0" text="Email" />
-            <Label layoutX="335.0" layoutY="164.0" text="Phone" />
-            <Label layoutX="602.0" layoutY="164.0" text="Address" />
-            <TextField fx:id="txtFirstName" layoutX="401.0" layoutY="70.0" />
-            <TextField fx:id="txtLastName" layoutX="676.0" layoutY="70.0" />
-            <TextField fx:id="txtEmail" layoutX="128.0" layoutY="160.0" />
-            <TextField fx:id="txtPhone" layoutX="401.0" layoutY="160.0" />
-            <TextField fx:id="txtAddress" layoutX="676.0" layoutY="160.0" />
-            <DatePicker fx:id="dateDOB" layoutX="128.0" layoutY="217.0" />
-            <Label layoutX="56.0" layoutY="221.0" text="D.O.B" />
-            <Label fx:id="lblSid" layoutX="143.0" layoutY="74.0" text="S001" />
+            <Label layoutX="83.0" layoutY="35.0" text="Student ID">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="82.0" layoutY="68.0" text="First Name">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="83.0" layoutY="106.0" text="Last Name">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="110.0" layoutY="144.0" text="Email">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="105.0" layoutY="183.0" text="Phone">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="97.0" layoutY="220.0" text="Address">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <TextField fx:id="txtFirstName" layoutX="166.0" layoutY="64.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtLastName" layoutX="166.0" layoutY="102.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtEmail" layoutX="164.0" layoutY="140.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtPhone" layoutX="165.0" layoutY="178.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtAddress" layoutX="164.0" layoutY="216.0" prefHeight="27.0" prefWidth="450.0" style="-fx-background-radius: 30;" />
+            <DatePicker fx:id="dateDOB" layoutX="164.0" layoutY="253.0" />
+            <Label layoutX="109.0" layoutY="257.0" text="D.O.B">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="lblSid" layoutX="166.0" layoutY="35.0" text="S001">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Button fx:id="btnSave" layoutX="709.0" layoutY="63.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #2B2A4C;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" layoutX="709.0" layoutY="114.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #116D6E;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="709.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #950101;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRefresh" layoutX="843.0" layoutY="276.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" style="-fx-background-color: #C4D9FF;" text="Refresh" />
          </children>
       </Pane>
-      <Button fx:id="btnSave" layoutX="792.0" layoutY="249.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" />
-      <Button fx:id="btnUpdate" layoutX="857.0" layoutY="249.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Updatde" />
-      <Button fx:id="btnRefresh" layoutX="943.0" layoutY="249.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" text="Refresh" />
-      <Button fx:id="btnDelete" layoutX="993.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete" />
    </children>
 </Pane>
