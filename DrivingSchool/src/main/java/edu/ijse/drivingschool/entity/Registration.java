@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,6 +33,7 @@ public class Registration {
 
     @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
     private List<Lesson> lesson;
+
 
     public Registration(String registrationId, Student studentId, Course courseId, LocalDate registrationDate) {
         this.registrationId = registrationId;

@@ -46,27 +46,56 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public int getStudentsRegisteredForAllCourses() throws Exception {
-        Session session = factoryConfiguration.getSession();
-        Transaction transaction = session.beginTransaction();
-        Long count;
+    public int getStudentsRegisteredForAllCourses(Session session) throws Exception {
+        // HQL: join students with registrations, group by student, check if they have all courses
+        String hql = """
+        SELECT s.id
+        FROM Student s
+        JOIN s.registration r
+        GROUP BY s.id
+        HAVING COUNT(DISTINCT r.course.id) = (SELECT COUNT(c.id) FROM Course c)
+    """;
 
-        try {
-            String hql = """
-            SELECT COUNT(s)
-            FROM Student s
-            WHERE (SELECT COUNT(r.course)
-                   FROM Registration r
-                   WHERE r.student = s) = (SELECT COUNT(c) FROM Course c)
-        """;
-            count = session.createQuery(hql, Long.class).getSingleResult();
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
-        return count.intValue();
+        List<String> studentIds = session.createQuery(hql, String.class).getResultList();
+        return studentIds.size();
     }
+
+
+//    @Override
+//    public int getStudentsRegisteredForAllCourses(Session session) throws Exception {
+//            String hql = """
+//            SELECT COUNT(s)
+//            FROM Student s
+//            WHERE (SELECT COUNT(r.course)
+//                   FROM Registration r
+//                   WHERE r.student = s) = (SELECT COUNT(c) FROM Course c)
+//        """;
+//            Long count = session.createQuery(hql, Long.class).getSingleResult();
+//            return count.intValue();
+//    }
+
+//    @Override
+//    public int getStudentsRegisteredForAllCourses() throws Exception {
+//        Session session = factoryConfiguration.getSession();
+//        Transaction transaction = session.beginTransaction();
+//        Long count;
+//
+//        try {
+//            String hql = """
+//            SELECT COUNT(s)
+//            FROM Student s
+//            WHERE (SELECT COUNT(r.course)
+//                   FROM Registration r
+//                   WHERE r.student = s) = (SELECT COUNT(c) FROM Course c)
+//        """;
+//            count = session.createQuery(hql, Long.class).getSingleResult();
+//            transaction.commit();
+//        } catch (Exception e) {
+//            transaction.rollback();
+//            throw e;
+//        } finally {
+//            session.close();
+//        }
+//        return count.intValue();
+//    }
 }
