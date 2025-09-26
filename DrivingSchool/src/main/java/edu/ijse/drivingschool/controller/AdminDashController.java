@@ -30,6 +30,9 @@ public class AdminDashController implements Initializable {
     private Label lblEnrollAllCourses;
 
     @FXML
+    private Label lblOngoingLessons;
+
+    @FXML
     private Button btnCoordinatoor;
 
     @FXML
@@ -195,12 +198,22 @@ public class AdminDashController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadStudentsAllCourseEnroll();
+        loadOngoingLessons();
     }
 
     private void  loadStudentsAllCourseEnroll() {
         try {
             int count = queryBO.getStudentsRegisteredForAllCourses();
             lblEnrollAllCourses.setText(String.valueOf(count));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void  loadOngoingLessons() {
+        try {
+            int count = queryBO.getOngoingLessonsCount();
+            lblOngoingLessons.setText(String.valueOf(count));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

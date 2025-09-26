@@ -33,9 +33,9 @@
                         <DropShadow height="10.0" radius="4.5" width="10.0" />
                      </effect>
                      <children>
-                        <Pane layoutX="261.0" layoutY="146.0" prefHeight="274.0" prefWidth="391.0" style="-fx-background-color: #32012F; -fx-background-radius: 40;">
+                        <Pane layoutX="42.0" layoutY="255.0" prefHeight="274.0" prefWidth="391.0" style="-fx-background-color: #32012F; -fx-background-radius: 40;">
                            <children>
-                              <Label fx:id="lblEnrollAllCourses" layoutX="141.0" layoutY="137.0" prefHeight="59.0" prefWidth="109.0" text="Label" textFill="WHITE">
+                              <Label fx:id="lblEnrollAllCourses" layoutX="168.0" layoutY="137.0" prefHeight="59.0" prefWidth="109.0" text="Label" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font size="41.0" />
                                  </font>
@@ -49,6 +49,28 @@
                                  </effect></Text>
                            </children>
                         </Pane>
+                        <Pane layoutX="481.0" layoutY="255.0" prefHeight="274.0" prefWidth="391.0" style="-fx-background-color: #32012F; -fx-background-radius: 40;">
+                           <children>
+                              <Label fx:id="lblOngoingLessons" layoutX="174.0" layoutY="137.0" prefHeight="59.0" prefWidth="109.0" text="Label" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="41.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="WHITE" layoutX="108.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="On Going Lessons">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="47.38" radius="18.7925" width="29.79" />
+                                 </effect>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Text layoutX="140.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!" textAlignment="CENTER" wrappingWidth="632.13671875">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                        </Text>
                      </children>
                   </Pane>
                </children>

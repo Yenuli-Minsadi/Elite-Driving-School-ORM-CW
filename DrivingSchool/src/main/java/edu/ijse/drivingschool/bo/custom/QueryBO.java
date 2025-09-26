@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface QueryBO extends SuperBO {
     int getStudentsRegisteredForAllCourses() throws Exception;
+    int getOngoingLessonsCount() throws Exception;
 }

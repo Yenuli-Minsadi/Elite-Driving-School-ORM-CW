@@ -60,6 +60,18 @@ public class QueryDAOImpl implements QueryDAO {
         return studentIds.size();
     }
 
+    @Override
+    public int getOngoingLessonsCount(Session session) throws Exception {
+        String hql = "SELECT COUNT(l) FROM Lesson l WHERE l.status = :status";
+
+        Long count = session.createQuery(hql, Long.class)
+                .setParameter("status", "On Going")
+                .getSingleResult();
+
+        return count.intValue();
+    }
+
+
 
 //    @Override
 //    public int getStudentsRegisteredForAllCourses(Session session) throws Exception {

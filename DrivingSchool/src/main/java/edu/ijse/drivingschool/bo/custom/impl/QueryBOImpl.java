@@ -35,6 +35,24 @@ public class QueryBOImpl implements QueryBO {
         return count;
     }
 
+    @Override
+    public int getOngoingLessonsCount() throws Exception {
+        Session session = factoryConfiguration.getSession();
+        Transaction transaction = session.beginTransaction();
+        int count;
+
+        try {
+            count = queryDAO.getOngoingLessonsCount(session);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+        return count;
+    }
+
 //    @Override
 //    public int getStudentsRegisteredForAllCourses() throws Exception {
 ////        return queryDAO.getStudentsRegisteredForAllCourses();

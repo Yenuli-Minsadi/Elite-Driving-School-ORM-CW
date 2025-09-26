@@ -13,6 +13,9 @@ import java.util.ResourceBundle;
 public class MainDashController implements Initializable {
 
     @FXML
+    private Label lblOngoingLessons;
+
+    @FXML
     private Pane ancMainDash;
 
     @FXML
@@ -24,12 +27,22 @@ public class MainDashController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadStudentsAllCourseEnroll();
+        loadOngoingLessons();
     }
 
     private void  loadStudentsAllCourseEnroll() {
         try {
             int count = queryBO.getStudentsRegisteredForAllCourses();
             lblEnrollAllCourses.setText(String.valueOf(count));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void  loadOngoingLessons() {
+        try {
+            int count = queryBO.getOngoingLessonsCount();
+            lblOngoingLessons.setText(String.valueOf(count));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
