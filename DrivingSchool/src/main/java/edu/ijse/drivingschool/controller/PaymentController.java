@@ -143,6 +143,8 @@ public class PaymentController implements Initializable {
             boolean isSaved = paymentBO.save(payment);
 
             if (isSaved) {
+                resetPage();
+                loadNextId();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Payment saved successfully!");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to save payment. Try again.");

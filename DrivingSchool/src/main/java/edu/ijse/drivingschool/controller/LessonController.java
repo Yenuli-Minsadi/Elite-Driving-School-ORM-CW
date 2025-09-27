@@ -160,6 +160,8 @@ public class LessonController implements Initializable {
             boolean isSaved = lessonBO.save(lesson);
 
             if (isSaved) {
+                resetPage();
+                loadNextId();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Lesson saved successfully!");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to save lesson. Try again.");

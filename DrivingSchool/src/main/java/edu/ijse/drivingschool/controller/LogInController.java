@@ -81,7 +81,7 @@ public class LogInController {
 
         try {
             User user = userBO.verifyUser(username,password);
-            showAlert(Alert.AlertType.ERROR, "Login Success", "Welcome"+user.getUsername());
+            showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome "+user.getUsername());
             loadDashboard(user);
         } catch (InvalidCredentials e) {
             showAlert(Alert.AlertType.ERROR, "Authentication failed", e.getMessage());

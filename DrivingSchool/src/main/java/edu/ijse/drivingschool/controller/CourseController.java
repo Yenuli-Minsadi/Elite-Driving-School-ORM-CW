@@ -136,6 +136,8 @@ public class CourseController implements Initializable {
             boolean isSaved = courseBO.save(course);
 
             if (isSaved) {
+                resetPage();
+                loadNextId();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Course saved successfully!");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to save course. Try again.");

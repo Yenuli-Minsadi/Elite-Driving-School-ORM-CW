@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="ancStudentDash" prefHeight="647.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.drivingschool.controller.LessonController">
    <children>
@@ -17,7 +18,7 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TableView fx:id="tblLesson" layoutX="16.0" layoutY="311.0" onMouseClicked="#onClickTable" prefHeight="231.0" prefWidth="881.0">
+            <TableView fx:id="tblLesson" layoutX="16.0" layoutY="311.0" onMouseClicked="#onClickTable" prefHeight="231.0" prefWidth="881.0" style="-fx-background-radius: 10;">
               <columns>
                 <TableColumn fx:id="colLid" prefWidth="95.0" text="Lesson ID" />
                 <TableColumn fx:id="colRid" prefWidth="106.0" text="REG_ID" />
@@ -30,29 +31,76 @@
                   <TableColumn fx:id="colDesc" prefWidth="89.0" text="Description" />
               </columns>
             </TableView>
-            <Label layoutX="320.0" layoutY="77.0" text="Registration ID" />
-            <Label layoutX="58.0" layoutY="230.0" text="Status" />
-            <Label fx:id="lblLessonId" layoutX="136.0" layoutY="77.0" text="L001" />
-            <DatePicker fx:id="dateLdate" layoutX="399.0" layoutY="168.0" />
-            <ComboBox fx:id="cmbStatus" layoutX="121.0" layoutY="226.0" prefWidth="150.0" />
-            <Label layoutX="38.0" layoutY="128.0" text="Lesson Name" />
-            <TextField fx:id="txtLname" layoutX="122.0" layoutY="124.0" />
-            <TextField fx:id="txtDesc" layoutX="411.0" layoutY="112.0" />
-            <Label layoutX="299.0" layoutY="116.0" text="Lesson Description" />
+            <Label layoutX="408.0" layoutY="53.0" text="Registration ID">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="150.0" layoutY="185.0" text="Status">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="lblLessonId" layoutX="209.0" layoutY="53.0" text="L001">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <DatePicker fx:id="dateLdate" layoutX="209.0" layoutY="137.0" prefHeight="27.0" />
+            <ComboBox fx:id="cmbStatus" layoutX="208.0" layoutY="181.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="424.0" layoutY="185.0" text="Lesson Name">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <TextField fx:id="txtLname" layoutX="517.0" layoutY="181.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <TextField fx:id="txtDesc" layoutX="209.0" layoutY="225.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="79.0" layoutY="229.0" text="Lesson Description">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="130.0" layoutY="53.0" text="Lesson ID">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtRid" layoutX="517.0" layoutY="49.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="129.0" layoutY="97.0" text="Course ID">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCid" layoutX="209.0" layoutY="93.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="424.0" layoutY="99.0" text="Instructor ID">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtIid" layoutX="517.0" layoutY="95.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="118.0" layoutY="141.0" text="Lesson Date">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="426.0" layoutY="144.0" text="Lesson Time">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLtime" layoutX="517.0" layoutY="140.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-radius: 30;" />
+            <Button fx:id="btnSave" layoutX="748.0" layoutY="49.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #2B2A4C;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" layoutX="748.0" layoutY="96.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #116D6E;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="748.0" layoutY="144.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #950101;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRefresh" layoutX="841.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" style="-fx-background-color: #C4D9FF;" text="Refresh" />
          </children>
       </Pane>
-      <Label layoutX="207.0" layoutY="111.0" text="Lesson ID" />
-      <Label layoutX="763.0" layoutY="111.0" text="Course ID" />
-      <Label layoutX="203.0" layoutY="201.0" text="Instructor ID" />
-      <Label layoutX="478.0" layoutY="201.0" text="Lesson Date" />
-      <Label layoutX="753.0" layoutY="201.0" text="Lesson Time" />
-      <TextField fx:id="txtRid" layoutX="552.0" layoutY="107.0" />
-      <TextField fx:id="txtCid" layoutX="827.0" layoutY="107.0" />
-      <TextField fx:id="txtIid" layoutX="279.0" layoutY="197.0" />
-      <TextField fx:id="txtLtime" layoutX="827.0" layoutY="197.0" />
-      <Button fx:id="btnSave" layoutX="788.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" />
-      <Button fx:id="btnUpdate" layoutX="853.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Updatde" />
-      <Button fx:id="btnRefresh" layoutX="939.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" text="Refresh" />
-      <Button fx:id="btnDelete" layoutX="989.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete" />
    </children>
 </Pane>

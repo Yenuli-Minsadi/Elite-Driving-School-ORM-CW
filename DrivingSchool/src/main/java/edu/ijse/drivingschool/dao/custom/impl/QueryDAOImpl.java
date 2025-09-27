@@ -47,7 +47,7 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public int getStudentsRegisteredForAllCourses(Session session) throws Exception {
-        // HQL: join students with registrations, group by student, check if they have all courses
+
         String hql = """
         SELECT s.id
         FROM Student s
